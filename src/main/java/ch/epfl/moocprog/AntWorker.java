@@ -1,4 +1,8 @@
 package ch.epfl.moocprog;
 
-public class AntWorker {
+import java.util.LinkedList;
+
+public class AntWorker extends Positionable {
+
+    private LinkedList<AntWorker> list;
 }

@@ -1,6 +1,7 @@
 package ch.epfl.moocprog.gfx;
 
 //import ch.epfl.moocprog.Pheromone;
+import ch.epfl.moocprog.Pheromone;
 import ch.epfl.moocprog.app.Context;
 import ch.epfl.moocprog.config.Config;
 import javafx.scene.canvas.Canvas;

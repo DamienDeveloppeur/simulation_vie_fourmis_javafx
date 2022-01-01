@@ -1,4 +1,4 @@
 package ch.epfl.moocprog;
 
-public class Anthill {
+public class Anthill extends Positionable {
 }

@@ -16,10 +16,10 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import ch.epfl.moocprog.Anthill;
-import ch.epfl.moocprog.Environment;
+//import ch.epfl.moocprog.Environment;
 import ch.epfl.moocprog.Termite;
 import ch.epfl.moocprog.utils.Time;
-import ch.epfl.moocprog.ToricPosition;
+//import ch.epfl.moocprog.ToricPosition;
 import ch.epfl.moocprog.utils.Vec2d;
 import ch.epfl.moocprog.app.Context;
 import javafx.animation.AnimationTimer;
