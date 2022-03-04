@@ -4,6 +4,8 @@ import java.util.Map;
 
 import ch.epfl.moocprog.Animal;
 import ch.epfl.moocprog.Anthill;
+import ch.epfl.moocprog.Pheromone;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 
 public final class EnvironmentGraphicRenderer extends Parent implements EnvironmentRenderer {
@@ -38,6 +40,11 @@ public final class EnvironmentGraphicRenderer extends Parent implements Environm
         animalsRenderer.render(canvas, animal);
     }
 
+    @Override
+    public void renderPheromone(Pheromone pheromone) {
+
+    }
+
 //    @Override
 //    public void renderPheromone(Pheromone pheromone) {
 //        pheromoneRenderer.render(canvas, pheromone);
@@ -46,6 +53,11 @@ public final class EnvironmentGraphicRenderer extends Parent implements Environm
     @Override
     public void renderAnthill(Anthill anthill) {
         anthillRenderer.render(canvas, anthill);
+    }
+
+    @Override
+    public Node getStyleableNode() {
+        return super.getStyleableNode();
     }
 
 //    @Override

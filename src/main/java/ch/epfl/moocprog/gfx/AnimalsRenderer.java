@@ -30,6 +30,6 @@ final class AnimalsRenderer implements AnimalVisitor {
     }
 
     void render(JavaFXAntSimulationCanvas canvas, Animal animal) {
-        //animal.accept(this, canvas);
+        animal.accept(this, canvas);
     }
 }

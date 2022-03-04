@@ -1,4 +1,4 @@
 package ch.epfl.moocprog;
 
-public class Termite extends Animal {
+public class Termite extends Positionable {
 }

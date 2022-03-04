@@ -1,4 +1,4 @@
 package ch.epfl.moocprog;
 
-public class Pheromone {
+public class Pheromone extends Positionable {
 }

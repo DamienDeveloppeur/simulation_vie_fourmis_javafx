@@ -24,7 +24,7 @@ class PheromoneRenderer implements EntityRenderer<Pheromone> {
         newTransform.prepend(getTransformation(entity));
 
         gc.setTransform(newTransform);
-        gc.setFill(getColor(entity.getQuantity()));
+        //gc.setFill(getColor(entity.getQuantity()));
         gc.fillOval(0, 0, getWidth(entity), getHeight(entity));
 
         gc.setFill(oldPaint);

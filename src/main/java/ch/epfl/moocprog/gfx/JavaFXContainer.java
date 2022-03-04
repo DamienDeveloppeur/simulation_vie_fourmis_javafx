@@ -349,11 +349,11 @@ public final class JavaFXContainer extends javafx.application.Application {
 						int y = Integer.parseInt(noSpace.split(":")[1].split(",")[1]);
 						if (className.equals("anthill")) {
 
-							environment.addAnthill(new Anthill(new ToricPosition(x, y)));
+							//environment.addAnthill(new Anthill(new ToricPosition(x, y)));
 						} else if (className.equals("termite")) {
-							Termite t = new Termite(new ToricPosition(x, y));
+							//Termite t = new Termite(new ToricPosition(x, y));
 
-							environment.addAnimal(t);
+							//environment.addAnimal(t);
 
 						} else {
 
@@ -494,13 +494,13 @@ public final class JavaFXContainer extends javafx.application.Application {
 			if (!bPause) {
 				dt = Time.fromMilliseconds(delta).times(timeFactor);
 
-				environment.update(dt);
+				//environment.update(dt);
 
 			} else {
 				dt = Time.fromMilliseconds(0);
 			}
 			renderer.clear();
-			environment.renderEntities(renderer);
+			//environment.renderEntities(renderer);
 
 			before = now;
 		}
