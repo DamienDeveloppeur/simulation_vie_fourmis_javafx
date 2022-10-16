@@ -3,17 +3,17 @@ package ch.epfl.moocprog.utils;
 import java.util.Objects;
 
 /**
- * ReprÃ©sente un simple vecteur sur le plan des {@code double}
+ * Représente un simple vecteur sur le plan des {@code double}
  */
 public final class Vec2d {
     private final double x;
     private final double y;
 
     /**
-     * Construit un vecteur avec les coordonnÃ©es fournies
+     * Construit un vecteur avec les coordonnées fournies
      *
-     * @param x La coordonnÃ©e x du vecteur
-     * @param y La coordonnÃ©e y du vecteur
+     * @param x La coordonnée x du vecteur
+     * @param y La coordonnée y du vecteur
      */
     public Vec2d(double x, double y) {
         this.x = x;
@@ -21,11 +21,11 @@ public final class Vec2d {
     }
 
     /**
-     * Construit un nouveau vecteur correspondant Ã  l'adition
+     * Construit un nouveau vecteur correspondant à l'adition
      * composante par composante entre {@code this} et {@code that}.
      *
-     * @param that Le vecteur Ã  aditionner avec {@code this}
-     * @return Un nouveau vecteur correspondant Ã  l'adition de {@code this}
+     * @param that Le vecteur à aditionner avec {@code this}
+     * @return Un nouveau vecteur correspondant à l'adition de {@code this}
      *         et {@code that}
      */
     public Vec2d add(Vec2d that) {
@@ -33,11 +33,11 @@ public final class Vec2d {
     }
 
     /**
-     * Construit un nouveau vecteur Ã  partir de la diffÃ©rence
+     * Construit un nouveau vecteur à partir de la différence
      * composante par composante de {@code this} par {@code that}.
      *
-     * @param that Le vecteur Ã  soustraire de {@code this}
-     * @return Un nouveau vecteur correspondant Ã  la soustraction
+     * @param that Le vecteur à soustraire de {@code this}
+     * @return Un nouveau vecteur correspondant à la soustraction
      *          de {@code this} par {@code that}
      */
     public Vec2d minus(Vec2d that) {
@@ -58,18 +58,18 @@ public final class Vec2d {
     }
 
     /**
-     * Retourne la coordonnÃ©e x de ce vecteur.
+     * Retourne la coordonnée x de ce vecteur.
      *
-     * @return La coordonnÃ©e x de ce vecteur.
+     * @return La coordonnée x de ce vecteur.
      */
     public double getX() {
         return x;
     }
 
     /**
-     * Retourne la coordonnÃ©e y de ce vecteur.
+     * Retourne la coordonnée y de ce vecteur.
      *
-     * @return La coordonnÃ©e y de ce vecteur.
+     * @return La coordonnée y de ce vecteur.
      */
     public double getY() {
         return y;
@@ -86,9 +86,9 @@ public final class Vec2d {
 
     /**
      * Calcule l'angle que forme ce vecteur par rapport
-     * Ã  l'axe x
+     * à l'axe x
      * @return L'angle que forme ce vecteur par rapport
-     *         Ã  l'axe x
+     *         à l'axe x
      */
     public double angle() {
         return Math.atan2(y, x);
@@ -97,7 +97,7 @@ public final class Vec2d {
     /**
      * Calcule le produit scalaire entre {@code this} et {@code that}.
      *
-     * @param that Le vecteur avec lequel le produit scalaire sera calculÃ©
+     * @param that Le vecteur avec lequel le produit scalaire sera calculé
      * @return Le produit scalaire entre {@code this} et {@code that}.
      */
     public double dotProduct(Vec2d that) {
@@ -106,20 +106,20 @@ public final class Vec2d {
 
     /**
      * Retourne un nouveau vecteur dont qui correspond
-     * Ã  la multiplication de {@code this} par {@code scalar}
-     * @param scalar Le scalaire avec lequel {@code this} sera multipliÃ©
+     * à la multiplication de {@code this} par {@code scalar}
+     * @param scalar Le scalaire avec lequel {@code this} sera multiplié
      * @return un nouveau vecteur dont correspondant
-     *         Ã  la multiplication de ce vecteur par {@code scalar}
+     *         à la multiplication de ce vecteur par {@code scalar}
      */
     public Vec2d scalarProduct(double scalar) {
         return new Vec2d(x*scalar, y*scalar);
     }
 
     /**
-     * Retourne un nouveau vecteur correspondant Ã  ce vecteur
-     * normalisÃ© (sa norme vaut 1)
+     * Retourne un nouveau vecteur correspondant à ce vecteur
+     * normalisé (sa norme vaut 1)
      *
-     * @return Un nouveau vecteur correspondant Ã  ce vecteur normalisÃ©
+     * @return Un nouveau vecteur correspondant à ce vecteur normalisé
      */
     public Vec2d normalized() {
         return scalarProduct(1/length());
@@ -147,10 +147,10 @@ public final class Vec2d {
     }
 
     /**
-     * Construit un nouveau vecteur normalisÃ© Ã  partir de l'angle donnÃ©.
+     * Construit un nouveau vecteur normalisé à partir de l'angle donné.
      *
      * @param angle L'angle (en radians) que doit former le vecteur avec l'axe x
-     * @return Un nouveau vecteur unitaire formant l'angle donnÃ© avec l'axe x
+     * @return Un nouveau vecteur unitaire formant l'angle donné avec l'axe x
      */
     public static Vec2d fromAngle(double angle) {
         return new Vec2d(Math.cos(angle), Math.sin(angle));

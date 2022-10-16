@@ -2,6 +2,7 @@ package ch.epfl.moocprog.gfx;
 
 import ch.epfl.moocprog.Animal;
 import ch.epfl.moocprog.Anthill;
+import ch.epfl.moocprog.Food;
 import ch.epfl.moocprog.Pheromone;
 
 public interface EnvironmentRenderer {
@@ -13,5 +14,5 @@ public interface EnvironmentRenderer {
 
     void renderAnthill(Anthill anthill);
 
-//    void renderFood(Food food);
+    void renderFood(Food food);
 }

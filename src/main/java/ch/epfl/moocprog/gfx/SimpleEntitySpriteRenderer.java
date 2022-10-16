@@ -4,18 +4,17 @@ import ch.epfl.moocprog.Animal;
 import ch.epfl.moocprog.Positionable;
 import ch.epfl.moocprog.AntWorker;
 import ch.epfl.moocprog.Anthill;
+import ch.epfl.moocprog.Food;
+import ch.epfl.moocprog.ToricPosition;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Affine;
-
-import java.util.LinkedList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 interface SimpleEntitySpriteRenderer<T extends Positionable> extends EntityRenderer<T> {
     Image getSprite(T entity);
-//    LinkedList<AntWorker> list = new LinkedList<>();
 
     default void drawSingleSprite(Canvas canvas, T entity) {
         GraphicsContext gc = canvas.getGraphicsContext2D();

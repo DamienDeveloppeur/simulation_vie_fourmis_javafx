@@ -4,7 +4,6 @@ import ch.epfl.moocprog.AntWorker;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
 
-
 import static ch.epfl.moocprog.gfx.GFXUtil.loadSprite;
 
 final class AntWorkerRenderer implements SimpleEntitySpriteRenderer<AntWorker> {

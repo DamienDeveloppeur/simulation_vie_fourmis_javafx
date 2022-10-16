@@ -4,15 +4,16 @@ import java.util.Map;
 
 import ch.epfl.moocprog.Animal;
 import ch.epfl.moocprog.Anthill;
+import ch.epfl.moocprog.Food;
 import ch.epfl.moocprog.Pheromone;
-import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.canvas.Canvas;
 
 public final class EnvironmentGraphicRenderer extends Parent implements EnvironmentRenderer {
     private final JavaFXAntSimulationCanvas canvas;
     private final AnthillRenderer anthillRenderer;
     private final AnimalsRenderer animalsRenderer;
-//    private final FoodRenderer foodRenderer;
+    private final FoodRenderer foodRenderer;
     private final PheromoneRenderer pheromoneRenderer;
     private final int width;
     private final int height;
@@ -23,7 +24,7 @@ public final class EnvironmentGraphicRenderer extends Parent implements Environm
         this.canvas = new JavaFXAntSimulationCanvas(debugProps,width, height);
         this.anthillRenderer = new AnthillRenderer();
         this.animalsRenderer = new AnimalsRenderer();
-//        this.foodRenderer = new FoodRenderer();
+        this.foodRenderer = new FoodRenderer();
         this.pheromoneRenderer = new PheromoneRenderer();
 
         this.getChildren().add(canvas);
@@ -42,13 +43,8 @@ public final class EnvironmentGraphicRenderer extends Parent implements Environm
 
     @Override
     public void renderPheromone(Pheromone pheromone) {
-
+        pheromoneRenderer.render(canvas, pheromone);
     }
-
-//    @Override
-//    public void renderPheromone(Pheromone pheromone) {
-//        pheromoneRenderer.render(canvas, pheromone);
-//    }
 
     @Override
     public void renderAnthill(Anthill anthill) {
@@ -56,12 +52,7 @@ public final class EnvironmentGraphicRenderer extends Parent implements Environm
     }
 
     @Override
-    public Node getStyleableNode() {
-        return super.getStyleableNode();
+    public void renderFood(Food food) {
+        foodRenderer.render(canvas, food);
     }
-
-//    @Override
-//    public void renderFood(Food food) {
-//        foodRenderer.render(canvas, food);
-//    }
 }
