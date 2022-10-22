@@ -73,8 +73,8 @@ public final class ToricPosition {
         //p = √ (x − x )2 + (y − y )2
         int width = getConfig().getInt(WORLD_WIDTH);
         int heigth = getConfig().getInt(WORLD_HEIGHT);
-        width = 10;
-        heigth = 10;
+//        width = 10;
+//        heigth = 10;
         System.out.println("width : "+ width+ "height : "+ heigth);
         HashMap<Vec2d, Double> map = new HashMap<>();
 
@@ -93,22 +93,22 @@ public final class ToricPosition {
 
         // - WORLD_WITH, 0
         map.put(new Vec2d(that.position.getX() - width, that.position.getY()),
-                this.position.distance(that.position.add(new Vec2d(that.position.getX() - width, that.position.getY()))));
+                this.position.distance(new Vec2d(that.position.getX() - width, that.position.getY())));
         System.out.println(new Vec2d(that.position.getX() - width, that.position.getY())+ "-  WORLD_WITH, 0 : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() - width, that.position.getY()))));
 
         // + WORLD_WITH, 0
         map.put(new Vec2d(that.position.getX() + width, that.position.getY()),
-                this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY()))));
+                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY())));
         System.out.println(new Vec2d(that.position.getX() + width, that.position.getY()) + "+  WORLD_WITH, 0 : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY()))));
 
         // + width, + height
         map.put(new Vec2d(that.position.getX() + width, that.position.getY() + heigth),
-                this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() + heigth))));
+                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY() + heigth)));
         System.out.println(new Vec2d(that.position.getX() + width, that.position.getY() + heigth) +"+ width, + height : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() + heigth))));
 
         // + width, - height
         map.put(new Vec2d(that.position.getX() + width, that.position.getY() - heigth),
-                this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() - heigth))));
+                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY() - heigth)));
         System.out.println(new Vec2d(that.position.getX() + width, that.position.getY() - heigth) +"+ width, - height : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() - heigth))));
 
 

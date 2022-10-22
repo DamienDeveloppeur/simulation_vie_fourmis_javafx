@@ -31,7 +31,7 @@ public class TestClass {
 
 
         //assertEquals(tp1.getVec2d(), new Vec2d(500,350));
-        Vec2d vec2d = new Vec2d(1,1);
+        Vec2d vec2d = new Vec2d(-2,-2);
         assertEquals(tp1.toricVector(tp2),vec2d);
         //tp1.toricVector(tp2);
 
