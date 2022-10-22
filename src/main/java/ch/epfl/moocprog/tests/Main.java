@@ -17,6 +17,7 @@ public class Main {
                 new File("res/app.cfg")
             )
         );
+
         final int width  = getConfig().getInt(WORLD_WIDTH);
         final int height = getConfig().getInt(WORLD_HEIGHT);
 
