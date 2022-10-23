@@ -65,4 +65,38 @@ public class TestClass {
 //        System.out.println("Initialized at tp4 : " + p2.getPosition());
 
     }
+
+    @Test
+    void etape3() {
+        System.out.println("hello");
+        ApplicationInitializer.initializeApplication(
+                new ImmutableConfigManager(
+                        new File("res/app.cfg")
+                )
+        );
+        ToricPosition tp3 = new ToricPosition(1,1);
+        ToricPosition tp2 = new ToricPosition(9,9);
+        Food f1 = new Food(tp2, 4.7);
+        Food f2 = new Food(tp3, 6.7);
+
+//        System.out.println();
+//
+//        System.out.println("Some tests for Food");
+//        System.out.println("Display : ");
+//        System.out.println(f1);
+        System.out.println(
+                "Initial : " + f1.getQuantity()
+                + ", taken : "
+                + f1.takeQuantity(5.0)
+                + ", left : " + f1.getQuantity()
+        );
+
+        System.out.println("Initial : " + f2.getQuantity()
+                + ", taken : "
+                + f2.takeQuantity(2.0)
+                + ", left : "
+                + f2.getQuantity());
+    }
+
+
 }

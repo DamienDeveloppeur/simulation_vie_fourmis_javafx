@@ -1,9 +1,7 @@
 package ch.epfl.moocprog;
 
 import ch.epfl.moocprog.utils.Vec2d;
-
 import java.util.*;
-
 import static ch.epfl.moocprog.app.Context.getConfig;
 import static ch.epfl.moocprog.config.Config.*;
 
@@ -12,7 +10,7 @@ public final class ToricPosition {
 
 
     /**
-     * Chapitre 1 - 2
+     * Chapitre 2 - 2
      * @param x
      * @param y
      */
@@ -21,7 +19,7 @@ public final class ToricPosition {
     }
 
     /**
-     *Chapitre 1 - 3
+     *Chapitre 2 - 3
      * @param vec2d
      */
     public ToricPosition(Vec2d vec2d) {
@@ -29,14 +27,14 @@ public final class ToricPosition {
     }
 
     /**
-     * Chapitre 1 - 4
+     * Chapitre 2 - 4
      */
     public ToricPosition() {
         this.position = new Vec2d(0,0);
     }
 
     /**
-     * Chapitre 1 - 5
+     * Chapitre 2 - 5
      * @param that
      * @return
      */
@@ -46,7 +44,7 @@ public final class ToricPosition {
     }
 
     /**
-     * Chapitre 1 - 6
+     * Chapitre 2 - 6
      * @param vec
      * @return
      */
@@ -56,7 +54,7 @@ public final class ToricPosition {
     }
 
     /**
-     * Chapitre 1 - 7
+     * Chapitre 2 - 7
      * @return
      */
     public Vec2d toVec2d(){
@@ -64,86 +62,32 @@ public final class ToricPosition {
     }
 
     /**
-     * Chapitre 1 - 8
+     * Chapitre 2 - 8
      * @param that
      * @return
      */
     public Vec2d toricVector(ToricPosition that){
         // calculer le plus petit vecteur allant de l'instance courante à that
-        //p = √ (x − x )2 + (y − y )2
         int width = getConfig().getInt(WORLD_WIDTH);
         int heigth = getConfig().getInt(WORLD_HEIGHT);
 //        width = 10;
 //        heigth = 10;
-        System.out.println("width : "+ width+ "height : "+ heigth);
-        HashMap<Vec2d, Double> map = new HashMap<>();
-
-        // that lui même
-        map.put(that.position,this.position.distance(that.position));
-        System.out.println("that : "+this.position.distance(that.position));
-        // 0, + WORLD_HEIGHT
-        map.put(new Vec2d(that.position.getX(), that.position.getY() + heigth),
-                this.position.distance(new Vec2d(that.position.getX(), that.position.getY() + heigth)));
-
-        System.out.println(new Vec2d(that.position.getX(), that.position.getY() + heigth) +"0, + WORLD_HEIGHT : "+this.position.distance(that.position.add(new Vec2d(that.position.getX(), that.position.getY() + heigth))));
-        // 0, - WORLD_HEIGHT
-        map.put(new Vec2d(that.position.getX(), that.position.getY() - heigth),
-                this.position.distance(new Vec2d(that.position.getX(), that.position.getY() - heigth)));
-        System.out.println(new Vec2d(that.position.getX(), that.position.getY() - heigth)+ "0, - WORLD_HEIGHT : "+this.position.distance(that.position.add(new Vec2d(that.position.getX(), that.position.getY() - heigth))));
-
-        // - WORLD_WITH, 0
-        map.put(new Vec2d(that.position.getX() - width, that.position.getY()),
-                this.position.distance(new Vec2d(that.position.getX() - width, that.position.getY())));
-        System.out.println(new Vec2d(that.position.getX() - width, that.position.getY())+ "-  WORLD_WITH, 0 : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() - width, that.position.getY()))));
-
-        // + WORLD_WITH, 0
-        map.put(new Vec2d(that.position.getX() + width, that.position.getY()),
-                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY())));
-        System.out.println(new Vec2d(that.position.getX() + width, that.position.getY()) + "+  WORLD_WITH, 0 : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY()))));
-
-        // + width, + height
-        map.put(new Vec2d(that.position.getX() + width, that.position.getY() + heigth),
-                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY() + heigth)));
-        System.out.println(new Vec2d(that.position.getX() + width, that.position.getY() + heigth) +"+ width, + height : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() + heigth))));
-
-        // + width, - height
-        map.put(new Vec2d(that.position.getX() + width, that.position.getY() - heigth),
-                this.position.distance(new Vec2d(that.position.getX() + width, that.position.getY() - heigth)));
-        System.out.println(new Vec2d(that.position.getX() + width, that.position.getY() - heigth) +"+ width, - height : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() + width, that.position.getY() - heigth))));
-
-
-        // - width, + height
-        map.put(new Vec2d(that.position.getX() - width, that.position.getY() + heigth),
-                this.position.distance(new Vec2d(that.position.getX() - width, that.position.getY() + heigth)));
-        System.out.println(new Vec2d(that.position.getX() - width, that.position.getY() + heigth) +"- width, + height : "+this.position.distance(that.position.add(new Vec2d(that.position.getX() - width, that.position.getY() + heigth))));
-
-        // - width, - height
-        map.put(new Vec2d(that.position.getX() - width, that.position.getY() - heigth),
-                this.position.distance(new Vec2d(that.position.getX() - width, that.position.getY() - heigth)));
-        System.out.println(new Vec2d(that.position.getX() - width, that.position.getY() - heigth) + "- width, - height : "+this.position.distance(new Vec2d(that.position.getX() - width, that.position.getY() - heigth)));
-
-        //System.out.println(this.position.distance(that.position));
-        Vec2d vector = map.entrySet()
-                .stream()
-                .sorted(Comparator.comparingDouble(Map.Entry::getValue))
-                .findFirst()
-                .map(Map.Entry::getKey)
-                .get();
-
-
-//        double dist1 = Math.sqrt(Math.pow((this.vec2d.getX() - that.vec2d.getX()),2) + Math.pow((this.vec2d.getY() - that.vec2d.getY()),2));
-//        double dist2 = Math.sqrt(Math.pow((this.vec2d.getX() - that.vec2d.getX()),2) + Math.pow((this.vec2d.getY() - that.vec2d.getY()),2));
-        System.out.println("-------------------");
-        System.out.println(this.position);
-        System.out.println(vector);
-        //Vec2d newVector = new Vec2d();
-
-        //return this.position.minus(vector);
+        Vec2d vector = null;
+        double minDistance = 999999999999999999999999.9;
+        for(int i = - 1; i < 2; i++){
+            for(int j = -1; j < 2; j++){
+                double distance = this.position.distance(that.position.add(new Vec2d(i*width, j*heigth)));
+                if(distance < minDistance){
+                    minDistance = distance;
+                    vector = that.position.add(new Vec2d(i*width, j*heigth));
+                }
+            }
+        }
         return vector.minus(this.position);
     }
 
     /**
-     * Chapitre 1 _ 9
+     * Chapitre 2 _ 9
      * @param that
      * @return
      */
@@ -156,12 +100,12 @@ public final class ToricPosition {
         return position;
     }
 
-    public void setPosition(Vec2d position) {
+    protected void setPosition(Vec2d position) {
         this.position = position;
     }
 
     /**
-     * Chapitre 1 - 1
+     * Chapitre 2 - 1
      *
      * @param x
      * @param y
