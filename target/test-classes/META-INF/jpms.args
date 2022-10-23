@@ -1,0 +1,4 @@
+--patch-module
+ch.epfl.moocprog.gfx=_
+--add-reads
+ch.epfl.moocprog.gfx=ALL-UNNAMED
