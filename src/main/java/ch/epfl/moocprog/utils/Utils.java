@@ -1,7 +1,7 @@
 package ch.epfl.moocprog.utils;
 
-import ch.epfl.moocprog.Positionable;
 import ch.epfl.moocprog.random.UniformDistribution;
+import ch.epfl.moocprog.Positionable;
 
 import java.util.*;
 

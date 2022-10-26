@@ -1,14 +1,16 @@
 package ch.epfl.moocprog.tests;
 
 import ch.epfl.moocprog.app.ApplicationInitializer;
+import ch.epfl.moocprog.app.Context;
+import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.config.ImmutableConfigManager;
+
 import java.io.File;
-import static ch.epfl.moocprog.app.Context.getConfig;
-import static ch.epfl.moocprog.config.Config.WORLD_HEIGHT;
-import static ch.epfl.moocprog.config.Config.WORLD_WIDTH;
+
 import ch.epfl.moocprog.utils.Vec2d;
 import ch.epfl.moocprog.ToricPosition;
 import ch.epfl.moocprog.Positionable;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,8 +20,8 @@ public class Main {
             )
         );
 
-        final int width  = getConfig().getInt(WORLD_WIDTH);
-        final int height = getConfig().getInt(WORLD_HEIGHT);
+        final int width  = Context.getConfig().getInt(Config.WORLD_WIDTH);
+        final int height = Context.getConfig().getInt(Config.WORLD_HEIGHT);
 
         ToricPosition tp1 = new ToricPosition();
         ToricPosition tp2 = new ToricPosition(1.2, 2.3);

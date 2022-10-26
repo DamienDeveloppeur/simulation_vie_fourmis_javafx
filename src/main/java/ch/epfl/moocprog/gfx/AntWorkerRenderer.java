@@ -1,10 +1,7 @@
 package ch.epfl.moocprog.gfx;
 
 import ch.epfl.moocprog.AntWorker;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-
-import static ch.epfl.moocprog.gfx.GFXUtil.loadSprite;
 
 final class AntWorkerRenderer implements SimpleEntitySpriteRenderer<AntWorker> {
     private static final double SIZE_X = 50;
@@ -12,7 +9,7 @@ final class AntWorkerRenderer implements SimpleEntitySpriteRenderer<AntWorker> {
     private final Image sprite;
 
     AntWorkerRenderer() {
-        sprite = loadSprite(GFXUtil.RES_PATH+"fourmi_noire.png");
+        sprite = GFXUtil.loadSprite(GFXUtil.RES_PATH+"fourmi_noire.png");
     }
 
     @Override

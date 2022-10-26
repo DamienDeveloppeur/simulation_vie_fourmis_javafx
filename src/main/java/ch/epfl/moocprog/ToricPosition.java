@@ -1,9 +1,8 @@
 package ch.epfl.moocprog;
 
+import ch.epfl.moocprog.app.Context;
+import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.utils.Vec2d;
-import java.util.*;
-import static ch.epfl.moocprog.app.Context.getConfig;
-import static ch.epfl.moocprog.config.Config.*;
 
 public final class ToricPosition {
     private Vec2d position;
@@ -68,8 +67,8 @@ public final class ToricPosition {
      */
     public Vec2d toricVector(ToricPosition that){
         // calculer le plus petit vecteur allant de l'instance courante à that
-        int width = getConfig().getInt(WORLD_WIDTH);
-        int heigth = getConfig().getInt(WORLD_HEIGHT);
+        int width = Context.getConfig().getInt(Config.WORLD_WIDTH);
+        int heigth = Context.getConfig().getInt(Config.WORLD_HEIGHT);
 //        width = 10;
 //        heigth = 10;
         Vec2d vector = null;
@@ -112,8 +111,8 @@ public final class ToricPosition {
      * @return
      */
     public static Vec2d clampedPosition(double x, double y) {
-        int width = getConfig().getInt(WORLD_WIDTH);
-        int heigth = getConfig().getInt(WORLD_HEIGHT);
+        int width = Context.getConfig().getInt(Config.WORLD_WIDTH);
+        int heigth = Context.getConfig().getInt(Config.WORLD_HEIGHT);
 
         while(x < 0 || x >= width){
             if (x < 0) x += width;

@@ -1,12 +1,10 @@
 package ch.epfl.moocprog;
 
+import ch.epfl.moocprog.app.Context;
 import ch.epfl.moocprog.config.Config;
-import ch.epfl.moocprog.utils.Time;
-import static ch.epfl.moocprog.app.Context.getConfig;
-import static ch.epfl.moocprog.config.Config.*;
-
-import ch.epfl.moocprog.random.UniformDistribution;
 import ch.epfl.moocprog.random.NormalDistribution;
+import ch.epfl.moocprog.random.UniformDistribution;
+import ch.epfl.moocprog.utils.Time;
 
 /**
  * Etape 3
@@ -20,12 +18,12 @@ public final class FoodGenerator {
     }
 
     public void update(FoodGeneratorEnvironmentView env, Time dt){
-        Time FOOD_GENERATOR_DELAY = getConfig().getTime(Config.FOOD_GENERATOR_DELAY);
-        double NEW_FOOD_QUANTITY_MIN = getConfig().getDouble(Config.NEW_FOOD_QUANTITY_MIN);
-        double NEW_FOOD_QUANTITY_MAX = getConfig().getDouble(Config.NEW_FOOD_QUANTITY_MAX);
+        Time FOOD_GENERATOR_DELAY = Context.getConfig().getTime(Config.FOOD_GENERATOR_DELAY);
+        double NEW_FOOD_QUANTITY_MIN = Context.getConfig().getDouble(Config.NEW_FOOD_QUANTITY_MIN);
+        double NEW_FOOD_QUANTITY_MAX = Context.getConfig().getDouble(Config.NEW_FOOD_QUANTITY_MAX);
 
-        double WIDTH = getConfig().getInt(WORLD_WIDTH);
-        double HEIGTH = getConfig().getInt(WORLD_HEIGHT);
+        double WIDTH = Context.getConfig().getInt(Config.WORLD_WIDTH);
+        double HEIGTH = Context.getConfig().getInt(Config.WORLD_HEIGHT);
 
         this.time = this.time.plus(dt);
         while(this.time.compareTo(FOOD_GENERATOR_DELAY) >= 0){

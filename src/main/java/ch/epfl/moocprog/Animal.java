@@ -1,6 +1,10 @@
 package ch.epfl.moocprog;
 
+import ch.epfl.moocprog.app.Context;
+import ch.epfl.moocprog.config.Config;
+import ch.epfl.moocprog.random.UniformDistribution;
 import ch.epfl.moocprog.utils.Time;
+import ch.epfl.moocprog.utils.Vec2d;
 
 /**
  * Go etape 5
@@ -10,21 +14,33 @@ public abstract class Animal extends Positionable {
     private int hitpoints;
     private Time lifespan;
 
+    public Animal(Double angle, int hitpoints, Time lifespan) {
+        this.angle = angle;
+        this.hitpoints = hitpoints;
+        this.lifespan = lifespan;
+    }
 
-    public Animal(ToricPosition toricPosition) {
+    public Animal(ToricPosition toricPosition, int hitpoints, Time lifespan) {
         super(toricPosition);
-        this.angle = 0.0;
+        this.hitpoints = hitpoints;
+        this.lifespan = lifespan;
+        this.angle = UniformDistribution.getValue(0, 2 * Math.PI);
+    }
+
+    public Time getLifespan() {
+        return lifespan;
     }
 
     public final double getDirection(){
-        return this.angle;
+        return Math.toRadians(this.angle);
     }
+
+    public final void setDirection(double angle){
+        this.angle= angle;
+    }
+
     public void accept(AnimalVisitor visitor, RenderingMedia s){
 
-    }
-
-    public Double getAngle() {
-        return angle;
     }
 
     public void setAngle(Double angle) {
@@ -40,18 +56,47 @@ public abstract class Animal extends Positionable {
     }
 
     public final boolean isDead(){
-        if(this.lifespan.compareTo(Time.fromSeconds(0)) < 1 || this.hitpoints <= 0) return true;
-        return false;
+        return this.lifespan.compareTo(Time.fromSeconds(0)) < 1 || this.hitpoints <= 0;
+        //return false;
     }
 
     public void setLifespan(Time lifespan) {
         this.lifespan = lifespan;
     }
+    /**
+     * Abstracts Methods
+     */
+    double getSpeed(){
+        return 0.0;
+    }
 
+    /**
+     *
+     * @param env
+     * @param dt
+     */
+    void update(AnimalEnvironmentView env, Time dt){
+        setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
+        move(dt);
+    }
+
+    /**
+     * Met à jour le déplacement de l'animal après un écoulement de temps
+     * @param dt
+     */
+    protected void move(Time dt) {
+        // deplacement des animaux : position += dt * vitesse en gardant sa direction
+        Vec2d vec2d = Vec2d.fromAngle(getDirection()).scalarProduct(dt.toSeconds()* Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR));
+        this.getPosition().add(vec2d);
+    }
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return "Animal{" +
-                "position"+ getPosition() +
+                "position"+ this.getPosition() +
                 "angle=" + angle +
                 ", hitpoints=" + hitpoints +
                 ", lifespan=" + lifespan +

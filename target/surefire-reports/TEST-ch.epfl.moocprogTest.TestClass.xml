@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="0" failures="0" name="ch.epfl.moocprog.TestClass" time="0" errors="0" skipped="0">
+<testsuite tests="0" failures="0" name="ch.epfl.moocprogTest.TestClass" time="0" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2021.3.1"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="11.0.12+8-LTS-237"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11.0.12\bin"/>
-    <property name="maven.multiModuleProjectDirectory" value="D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie"/>
+    <property name="maven.multiModuleProjectDirectory" value="D:\PROJET\projet_java\simulation_vie_fourmi_javafx"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="https://openjdk.java.net/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="FR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie"/>
+    <property name="user.dir" value="D:\PROJET\projet_java\simulation_vie_fourmi_javafx"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="11.0.12+8-LTS-237"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>

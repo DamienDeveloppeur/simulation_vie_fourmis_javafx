@@ -14,6 +14,7 @@ ch\epfl\moocprog\AntWorker.class
 ch\epfl\moocprog\gfx\AnthillRenderer.class
 ch\epfl\moocprog\Positionable.class
 ch\epfl\moocprog\gfx\PheromoneRenderer.class
+ch\epfl\moocprog\AnimalEnvironmentView.class
 ch\epfl\moocprog\config\ConfigReader.class
 ch\epfl\moocprog\tests\Main.class
 ch\epfl\moocprog\AnimalVisitor.class

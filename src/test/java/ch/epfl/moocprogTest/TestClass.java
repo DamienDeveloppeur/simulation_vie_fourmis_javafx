@@ -1,5 +1,7 @@
-package ch.epfl.moocprog;
+package ch.epfl.moocprogTest;
 
+import ch.epfl.moocprog.Food;
+import ch.epfl.moocprog.ToricPosition;
 import ch.epfl.moocprog.app.ApplicationInitializer;
 import ch.epfl.moocprog.config.ImmutableConfigManager;
 import ch.epfl.moocprog.utils.Vec2d;

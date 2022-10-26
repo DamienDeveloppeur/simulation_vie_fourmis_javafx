@@ -1,8 +1,5 @@
 package ch.epfl.moocprog.gfx;
 
-import static ch.epfl.moocprog.app.Context.getApplication;
-import static ch.epfl.moocprog.config.Config.*;
-import java.math.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,18 +14,17 @@ import java.util.regex.Pattern;
 
 import ch.epfl.moocprog.Anthill;
 import ch.epfl.moocprog.Environment;
+import ch.epfl.moocprog.ToricPosition;
+import ch.epfl.moocprog.app.Context;
+import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.Termite;
 import ch.epfl.moocprog.utils.Time;
-import ch.epfl.moocprog.ToricPosition;
-import ch.epfl.moocprog.utils.Vec2d;
-import ch.epfl.moocprog.app.Context;
 import javafx.animation.AnimationTimer;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,7 +35,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public final class JavaFXContainer extends javafx.application.Application {
@@ -489,7 +484,7 @@ public final class JavaFXContainer extends javafx.application.Application {
 			long delta = (now - before) / 1_000_000;
 			
 			Time dt;
-			double timeFactor = Math.min(maxDT,getApplication().getConfigManager().getDouble(TIME_FACTOR));
+			double timeFactor = Math.min(maxDT, Context.getApplication().getConfigManager().getDouble(Config.TIME_FACTOR));
 			
 			if (!bPause) {
 				dt = Time.fromMilliseconds(delta).times(timeFactor);

@@ -1,11 +1,7 @@
 package ch.epfl.moocprog.gfx;
 
 import ch.epfl.moocprog.Anthill;
-import ch.epfl.moocprog.random.UniformDistribution;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-
-import static ch.epfl.moocprog.gfx.GFXUtil.loadSprite;
 
 final class AnthillRenderer implements SimpleEntitySpriteRenderer<Anthill> {
     private static final double SIZE_X = 100;
@@ -13,7 +9,7 @@ final class AnthillRenderer implements SimpleEntitySpriteRenderer<Anthill> {
     private final Image sprite;
 
     AnthillRenderer() {
-        sprite = loadSprite(GFXUtil.RES_PATH+"anthill.png");
+        sprite = GFXUtil.loadSprite(GFXUtil.RES_PATH+"anthill.png");
     }
 
     @Override

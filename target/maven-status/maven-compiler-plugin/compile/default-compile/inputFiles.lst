@@ -1,47 +1,48 @@
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\app\ApplicationInitializer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\config\ConfigManager.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\AnthillRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\GFXUtil.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\TermiteRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\config\ConfigReader.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Anthill.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\FoodRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\AnimalVisitor.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\config\ImmutableConfigManager.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\EnvironmentGraphicRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\JavaFXAntSimulationCanvas.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\JavaFXContainer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\utils\Time.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\app\Main.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\utils\Pair.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\AntSoldier.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\random\UniformDistribution.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\ToricPosition.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\JavaFXCanvasRenderingMedia.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\FoodGenerator.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\utils\Utils.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Food.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\AntSoldierRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\EntityRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Termite.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\config\Config.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\PheromoneRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Uid.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\utils\Vec2d.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\app\Application.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\AnimalsRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\AntWorkerRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Ant.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Environment.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\FoodGeneratorEnvironmentView.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\SimpleEntitySpriteRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\app\Context.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\gfx\EnvironmentRenderer.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Animal.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\module-info.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\tests\Main.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\AntWorker.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\random\NormalDistribution.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Positionable.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\RenderingMedia.java
-D:\PROJET\projet_java\simulation_vie_fourmi_javafx - Copie\src\main\java\ch\epfl\moocprog\Pheromone.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\AntSoldier.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\utils\Pair.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\random\UniformDistribution.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\tests\Main.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\AnimalEnvironmentView.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Anthill.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Termite.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\GFXUtil.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\module-info.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\ToricPosition.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\FoodGeneratorEnvironmentView.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Positionable.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\app\Main.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\AnimalVisitor.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\EnvironmentRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Ant.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\AnimalsRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\EnvironmentGraphicRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Uid.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\EntityRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\RenderingMedia.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\JavaFXAntSimulationCanvas.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\utils\Utils.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\AntWorkerRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\TermiteRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\utils\Time.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\config\ConfigReader.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Food.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\utils\Vec2d.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\app\ApplicationInitializer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\SimpleEntitySpriteRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\random\NormalDistribution.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\app\Application.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\JavaFXContainer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\JavaFXCanvasRenderingMedia.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\config\Config.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Environment.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\config\ImmutableConfigManager.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\FoodGenerator.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\PheromoneRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Pheromone.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\AntWorker.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\FoodRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\config\ConfigManager.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\app\Context.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\Animal.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\AnthillRenderer.java
+D:\PROJET\projet_java\simulation_vie_fourmi_javafx\src\main\java\ch\epfl\moocprog\gfx\AntSoldierRenderer.java

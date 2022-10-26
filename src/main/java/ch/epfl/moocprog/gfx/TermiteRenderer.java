@@ -1,10 +1,7 @@
 package ch.epfl.moocprog.gfx;
 
 import ch.epfl.moocprog.Termite;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-
-import static ch.epfl.moocprog.gfx.GFXUtil.loadSprite;
 
 class TermiteRenderer implements SimpleEntitySpriteRenderer<Termite> {
     private static final double SIZE_X = 50;
@@ -12,7 +9,7 @@ class TermiteRenderer implements SimpleEntitySpriteRenderer<Termite> {
     private final Image sprite;
 
     TermiteRenderer() {
-        sprite = loadSprite(GFXUtil.RES_PATH+"termite.png");
+        sprite = GFXUtil.loadSprite(GFXUtil.RES_PATH+"termite.png");
     }
 
     @Override

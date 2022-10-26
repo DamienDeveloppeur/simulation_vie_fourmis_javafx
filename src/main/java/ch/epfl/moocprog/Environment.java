@@ -1,10 +1,12 @@
 package ch.epfl.moocprog;
 
+import ch.epfl.moocprog.app.Context;
+import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.gfx.EnvironmentRenderer;
 import ch.epfl.moocprog.utils.Time;
-import static ch.epfl.moocprog.app.Context.getConfig;
-import static ch.epfl.moocprog.config.Config.*;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,9 +15,10 @@ import java.util.List;
  * décrit le monde dans lequel les animaux évoluent
  * Ajout etape 4
  */
-public final class Environment implements FoodGeneratorEnvironmentView {
+public final class Environment implements FoodGeneratorEnvironmentView, AnimalEnvironmentView {
     private FoodGenerator foodGenerator;
     private List<Food> foods;
+    private List<Animal> animal;
 
     public Environment() {
         this.foodGenerator = new FoodGenerator();
@@ -28,7 +31,8 @@ public final class Environment implements FoodGeneratorEnvironmentView {
 
     }
     public void addAnimal(Animal animal){
-
+        if(animal == null) throw new IllegalArgumentException("Animal ne peut être null");
+        this.animal.add(animal);
     }
 
     @Override
@@ -47,11 +51,23 @@ public final class Environment implements FoodGeneratorEnvironmentView {
     public void update(Time dt){
         foodGenerator.update(this,dt);
         foods.removeIf(food -> food.getQuantity() <= 0);
+//        this.animal.stream()
+//                .flatMap(an -> an.isDead() ? animal.remove(an) : an.move(dt))
+//        ;
+        Iterator<Animal> i = this.animal.iterator();
+        while(i.hasNext()){
+            Animal a = i.next();
+            if(a.isDead()) this.animal.remove(a);
+            else a.move(dt);
+        }
+
+
+
     }
     public int getWidth(){
-        return getConfig().getInt(WORLD_WIDTH);
+        return Context.getConfig().getInt(Config.WORLD_WIDTH);
     }
     public int getHeight(){
-        return getConfig().getInt(WORLD_HEIGHT);
+        return Context.getConfig().getInt(Config.WORLD_HEIGHT);
     }
 }

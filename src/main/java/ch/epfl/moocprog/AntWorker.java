@@ -8,4 +8,8 @@ public class AntWorker extends Ant{
         visitor.visit(this, s);
     }
 
+    @Override
+    double getSpeed(){
+        return 0.0;
+    }
 }

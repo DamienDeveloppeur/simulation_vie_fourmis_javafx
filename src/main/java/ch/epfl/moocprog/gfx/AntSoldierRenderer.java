@@ -1,10 +1,7 @@
 package ch.epfl.moocprog.gfx;
 
 import ch.epfl.moocprog.AntSoldier;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
-
-import static ch.epfl.moocprog.gfx.GFXUtil.loadSprite;
 
 final class AntSoldierRenderer implements SimpleEntitySpriteRenderer<AntSoldier> {
     private static final double SIZE_X = 50;
@@ -12,7 +9,7 @@ final class AntSoldierRenderer implements SimpleEntitySpriteRenderer<AntSoldier>
     private final Image sprite;
 
     AntSoldierRenderer() {
-        sprite = loadSprite(GFXUtil.RES_PATH+"fourmi_rouge.png");
+        sprite = GFXUtil.loadSprite(GFXUtil.RES_PATH+"fourmi_rouge.png");
     }
 
     @Override
