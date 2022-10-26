@@ -27,27 +27,23 @@ public abstract class Animal extends Positionable {
         this.angle = UniformDistribution.getValue(0, 2 * Math.PI);
     }
 
-    public Time getLifespan() {
+    public final Time getLifespan() {
         return lifespan;
     }
 
     public final double getDirection(){
-        return Math.toRadians(this.angle);
+        return this.angle;
     }
 
     public final void setDirection(double angle){
         this.angle= angle;
     }
 
-    public void accept(AnimalVisitor visitor, RenderingMedia s){
-
-    }
-
     public void setAngle(Double angle) {
         this.angle = angle;
     }
 
-    public int getHitpoints() {
+    public final int getHitpoints() {
         return hitpoints;
     }
 
@@ -63,31 +59,38 @@ public abstract class Animal extends Positionable {
     public void setLifespan(Time lifespan) {
         this.lifespan = lifespan;
     }
+
     /**
      * Abstracts Methods
      */
-    double getSpeed(){
-        return 0.0;
-    }
+    public abstract double getSpeed();
 
+
+    public void accept(AnimalVisitor visitor, RenderingMedia s){
+
+    }
     /**
      *
      * @param env
      * @param dt
      */
     void update(AnimalEnvironmentView env, Time dt){
-        setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
-        move(dt);
+
+        if(!this.isDead()){
+            setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
+            move(dt);
+        }
+
     }
 
     /**
      * Met à jour le déplacement de l'animal après un écoulement de temps
      * @param dt
      */
-    protected void move(Time dt) {
+    protected final void move(Time dt) {
         // deplacement des animaux : position += dt * vitesse en gardant sa direction
-        Vec2d vec2d = Vec2d.fromAngle(getDirection()).scalarProduct(dt.toSeconds()* Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR));
-        this.getPosition().add(vec2d);
+        Vec2d vec2d = Vec2d.fromAngle(getDirection()).scalarProduct(dt.toSeconds()* getSpeed());
+        this.setPosition(this.getPosition().add(vec2d));
     }
     /**
      *

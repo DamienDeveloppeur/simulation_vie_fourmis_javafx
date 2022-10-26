@@ -11,8 +11,9 @@ public class Termite extends Animal{
     public void accept(AnimalVisitor visitor, RenderingMedia s) {
         visitor.visit(this, s);
     }
+
     @Override
-    double getSpeed(){
+    public double getSpeed(){
         return Context.getConfig().getDouble(Config.TERMITE_SPEED);
     }
 }

@@ -1,9 +1,9 @@
 package ch.epfl.moocprogTest;
 
-import ch.epfl.moocprog.Food;
-import ch.epfl.moocprog.ToricPosition;
+import ch.epfl.moocprog.*;
 import ch.epfl.moocprog.app.ApplicationInitializer;
 import ch.epfl.moocprog.config.ImmutableConfigManager;
+import ch.epfl.moocprog.utils.Time;
 import ch.epfl.moocprog.utils.Vec2d;
 import org.junit.jupiter.api.Test;
 
@@ -24,17 +24,34 @@ public class TestClass {
                 new File("res/app.cfg")
             )
         );
+        ToricPosition tp3 = new ToricPosition(1,1);
+        ToricPosition tp2 = new ToricPosition(400,300);
+        Environment env = new Environment();
+        // crée une termite, vérifier la méthode is dead
+        Termite termite1 = new Termite(tp3);
+        Termite termite2 = new Termite(tp2);
+        //termite1.setHitpoints(0);
+        env.addAnimal(termite1);
+        //env.addAnimal(termite2);
+        System.out.println("SIZE : "+ env.getAnimal().size());
+        assertEquals(termite1.getSpeed(),120.0);
 
-        final int width  = getConfig().getInt(WORLD_WIDTH);
-        final int height = getConfig().getInt(WORLD_HEIGHT);
-        ToricPosition tp1 = new ToricPosition(1,1);
-        ToricPosition tp2 = new ToricPosition(9,9);
-        ToricPosition tp3 = new ToricPosition(7,7);
+        System.out.println(termite1.getPosition().getPosition());
+        env.update(Time.fromSeconds(0.03));
+        System.out.println("SIZE : "+ env.getAnimal().size());
+        System.out.println(termite1.getPosition().getPosition());
 
 
-        //assertEquals(tp1.getVec2d(), new Vec2d(500,350));
-        Vec2d vec2d = new Vec2d(-2,-2);
-        assertEquals(tp1.toricVector(tp2),vec2d);
+//        final int width  = getConfig().getInt(WORLD_WIDTH);
+//        final int height = getConfig().getInt(WORLD_HEIGHT);
+//        ToricPosition tp1 = new ToricPosition(1,1);
+//        ToricPosition tp2 = new ToricPosition(9,9);
+//        ToricPosition tp3 = new ToricPosition(7,7);
+//
+//
+//        //assertEquals(tp1.getVec2d(), new Vec2d(500,350));
+//        Vec2d vec2d = new Vec2d(-2,-2);
+//        assertEquals(tp1.toricVector(tp2),vec2d);
         //tp1.toricVector(tp2);
 
 //        ToricPosition tp1 = new ToricPosition();
@@ -99,6 +116,13 @@ public class TestClass {
                 + ", left : "
                 + f2.getQuantity());
     }
+    @Test
+    void etape5(){
+        ToricPosition tp3 = new ToricPosition(1,1);
+        ToricPosition tp2 = new ToricPosition(400,300);
+        // crée une termite, vérifier la méthode is dead
+        Termite termite1 = new Termite(tp3);
 
+    }
 
 }

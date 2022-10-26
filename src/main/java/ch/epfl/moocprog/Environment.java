@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Etape 3
@@ -23,10 +24,18 @@ public final class Environment implements FoodGeneratorEnvironmentView, AnimalEn
     public Environment() {
         this.foodGenerator = new FoodGenerator();
         this.foods = new LinkedList<Food>();
+        this.animal = new LinkedList<>();
     }
+
+    /**
+     * Draw food and animals
+     * @param environmentRenderer
+     */
     public void renderEntities(EnvironmentRenderer environmentRenderer){
         foods.forEach(environmentRenderer::renderFood);
+        this.animal.forEach(a -> environmentRenderer.renderAnimal(a));
     }
+
     public void addAnthill(Anthill anthill){
 
     }
@@ -40,6 +49,11 @@ public final class Environment implements FoodGeneratorEnvironmentView, AnimalEn
         if(food == null) throw new IllegalArgumentException("food ne peut être null");
         this.foods.add(food);
     }
+
+    /**
+     *
+     * @return
+     */
     public List<Double> getFoodQuantities(){
         List<Double> temp = new ArrayList<>();
         for(Food food : foods){
@@ -48,22 +62,57 @@ public final class Environment implements FoodGeneratorEnvironmentView, AnimalEn
         return temp;
     }
 
+    /**
+     *
+     * @param dt
+     */
     public void update(Time dt){
+        System.out.println("dt : "+ dt);
         foodGenerator.update(this,dt);
-        foods.removeIf(food -> food.getQuantity() <= 0);
-//        this.animal.stream()
-//                .flatMap(an -> an.isDead() ? animal.remove(an) : an.move(dt))
-//        ;
         Iterator<Animal> i = this.animal.iterator();
         while(i.hasNext()){
             Animal a = i.next();
-            if(a.isDead()) this.animal.remove(a);
-            else a.move(dt);
+            if(a.isDead()) i.remove();
+            else a.update(this, dt);
         }
-
-
+        foods.removeIf(food -> food.getQuantity() <= 0);
 
     }
+
+    /**
+     *
+     * @return
+     */
+    public List<ToricPosition> getAnimalsPosition(){
+        return this.animal.stream()
+                .map(a -> a.getPosition())
+                .collect(Collectors.toList());
+    }
+
+    public FoodGenerator getFoodGenerator() {
+        return foodGenerator;
+    }
+
+    public void setFoodGenerator(FoodGenerator foodGenerator) {
+        this.foodGenerator = foodGenerator;
+    }
+
+    public List<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(List<Food> foods) {
+        this.foods = foods;
+    }
+
+    public List<Animal> getAnimal() {
+        return animal;
+    }
+
+    public void setAnimal(List<Animal> animal) {
+        this.animal = animal;
+    }
+
     public int getWidth(){
         return Context.getConfig().getInt(Config.WORLD_WIDTH);
     }

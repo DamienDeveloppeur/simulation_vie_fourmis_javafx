@@ -9,7 +9,7 @@ public class AntWorker extends Ant{
     }
 
     @Override
-    double getSpeed(){
+    public double getSpeed(){
         return 0.0;
     }
 }

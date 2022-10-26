@@ -9,7 +9,7 @@ public class AntSoldier extends Ant{
         visitor.visit(this, s);
     }
     @Override
-    double getSpeed(){
+    public double getSpeed(){
         return 0.0;
     }
 }
