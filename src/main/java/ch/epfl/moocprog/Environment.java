@@ -67,7 +67,6 @@ public final class Environment implements FoodGeneratorEnvironmentView, AnimalEn
      * @param dt
      */
     public void update(Time dt){
-        System.out.println("dt : "+ dt);
         foodGenerator.update(this,dt);
         Iterator<Animal> i = this.animal.iterator();
         while(i.hasNext()){

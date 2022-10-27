@@ -32,15 +32,6 @@ public class TestClass {
         Termite termite2 = new Termite(tp2);
         //termite1.setHitpoints(0);
         env.addAnimal(termite1);
-        //env.addAnimal(termite2);
-        System.out.println("SIZE : "+ env.getAnimal().size());
-        assertEquals(termite1.getSpeed(),120.0);
-
-        System.out.println(termite1.getPosition().getPosition());
-        env.update(Time.fromSeconds(0.03));
-        System.out.println("SIZE : "+ env.getAnimal().size());
-        System.out.println(termite1.getPosition().getPosition());
-
 
 //        final int width  = getConfig().getInt(WORLD_WIDTH);
 //        final int height = getConfig().getInt(WORLD_HEIGHT);
