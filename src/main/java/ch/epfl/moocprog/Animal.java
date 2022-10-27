@@ -59,7 +59,7 @@ public abstract class Animal extends Positionable {
      * @param env
      * @param dt
      */
-    void update(AnimalEnvironmentView env, Time dt){
+    public void update(AnimalEnvironmentView env, Time dt){
         if(!this.isDead()){
             setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
             move(dt);
@@ -71,10 +71,11 @@ public abstract class Animal extends Positionable {
      * @param dt
      */
     protected final void move(Time dt) {
-        Double value = Utils.pickValue(computeRotationProbs().getAngles(), computeRotationProbs().getProbabilities());
-        setRotationDelay(getRotationDelay().plus(dt));
-        while(getRotationDelay().compareTo(getANIMAL_NEXT_ROTATION_DELAY()) >= 0){
-            setRotationDelay(getRotationDelay().minus(getANIMAL_NEXT_ROTATION_DELAY()));
+
+        while(getRotationDelay().compareTo(getANIMAL_NEXT_ROTATION_DELAY()) < 0){
+            Double value = Utils.pickValue(computeRotationProbs().getAngles(), computeRotationProbs().getProbabilities());
+            value = Math.toRadians(value);
+            setRotationDelay(getRotationDelay().plus(dt));
             rotate(value);
         }
         // deplacement des animaux : position += dt * vitesse en gardant sa direction

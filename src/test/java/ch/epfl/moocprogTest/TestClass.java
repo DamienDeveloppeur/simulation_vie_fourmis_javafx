@@ -32,7 +32,9 @@ public class TestClass {
         Termite termite2 = new Termite(tp2);
         //termite1.setHitpoints(0);
         env.addAnimal(termite1);
-
+        System.out.println(termite1.getAngle());
+        termite1.update(env, Time.fromSeconds(0.050));
+        System.out.println(termite1.getAngle());
 //        final int width  = getConfig().getInt(WORLD_WIDTH);
 //        final int height = getConfig().getInt(WORLD_HEIGHT);
 //        ToricPosition tp1 = new ToricPosition(1,1);
