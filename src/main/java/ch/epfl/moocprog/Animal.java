@@ -39,7 +39,7 @@ public abstract class Animal extends Positionable {
     protected RotationProbability computeRotationProbs(){
         RotationProbability rp = new RotationProbability(
                 new double[] {-180.0, -100.0, -55.0, -25.0, -10.0,0.0,10.0,25.0,55.0,100.0,180.0},
-                //new double[] {0.0000, 0.0000, 0.0005, 0.0010, 0.0150,0.4870,0.0150,0.0010,0.0005,0.0000,0.0000}
+                //new double[] {0.0000, 0.0100, 0.0900, 0.1500, 0.5000, 0.1500, 0.0900, 0.0100, 0.0000}
                 new double[] {0.0000, 0.0000, 0.0005, 0.0010, 0.0050,0.9870,0.0050,0.0010,0.0005,0.0000,0.0000}
         );
         return rp;
@@ -71,12 +71,17 @@ public abstract class Animal extends Positionable {
      * @param dt
      */
     protected final void move(Time dt) {
-
-        while(getRotationDelay().compareTo(getANIMAL_NEXT_ROTATION_DELAY()) < 0){
+        //Pour mettre en oeuvre cela, vous pouvez ajouter à l’animal un compteur de
+        //type Time (initialisé à Time.ZERO), nommé rotationDelay, mesurant le temps
+        //écoulé depuis la précédente rotation.
+        setRotationDelay(getRotationDelay().plus(dt));
+        //compareTo --> -1 rotationDelay est strictement plus petit que la constante
+        while(getRotationDelay().compareTo(getANIMAL_NEXT_ROTATION_DELAY())  >= 0){
+            setRotationDelay(getRotationDelay().minus(getANIMAL_NEXT_ROTATION_DELAY()));
             Double value = Utils.pickValue(computeRotationProbs().getAngles(), computeRotationProbs().getProbabilities());
-            value = Math.toRadians(value);
-            setRotationDelay(getRotationDelay().plus(dt));
+//            value = Math.toRadians(value);
             rotate(value);
+
         }
         // deplacement des animaux : position += dt * vitesse en gardant sa direction
         Vec2d vec2d = Vec2d.fromAngle(getDirection()).scalarProduct(dt.toSeconds()* getSpeed());
