@@ -18,5 +18,9 @@ public abstract class Ant extends Animal{
     public final Uid getAnthillId(){
         return  anthillId;
     }
-
+    public void turnaround(){
+        double angleToAdd = this.getAngle()+Math.PI;
+        if(angleToAdd > Math.PI*2) angleToAdd -= Math.PI;
+        this.setAngle(angleToAdd);
+    }
 }

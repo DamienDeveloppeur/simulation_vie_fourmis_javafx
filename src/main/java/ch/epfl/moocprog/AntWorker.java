@@ -28,7 +28,43 @@ public class AntWorker extends Ant{
         return foodQuantity;
     }
 
-    void seekForFood(AntWorkerEnvironmentView env, Time dt){
+    public void setFoodQuantity(double foodQuantity) {
+        this.foodQuantity = foodQuantity;
+    }
+
+    /**
+     *
+     * @param env
+     * @param dt
+     */
+    public void seekForFood(AntWorkerEnvironmentView env, Time dt) {
+        System.out.println(env.dropFood(this));
+//        while(env.getClosestFoodForAnt(this) != null || (env.dropFood(this) && this.foodQuantity > 0 ) ){
+//            System.out.println("loop of loop");
+//            if (this.foodQuantity == 0) {
+//                Food f = env.getClosestFoodForAnt(this);
+//                if (f != null) {
+//                    double quantityTaked = f.takeQuantity(Context.getConfig().getDouble(Config.ANT_MAX_FOOD));
+//                    this.foodQuantity += quantityTaked;
+//                    turnaround();
+//                    env.dropFood(this);
+//                }
+//            } else {
+//                env.dropFood(this);
+//            }
+//        }
+        System.out.println("Out of loop");
+        if (this.foodQuantity == 0) {
+            Food f = env.getClosestFoodForAnt(this);
+            if (f != null) {
+                double quantityTaked = f.takeQuantity(Context.getConfig().getDouble(Config.ANT_MAX_FOOD));
+                this.foodQuantity += quantityTaked;
+                turnaround();
+                env.dropFood(this);
+            }
+        } else {
+            env.dropFood(this);
+        }
         move(dt);
     }
     @Override

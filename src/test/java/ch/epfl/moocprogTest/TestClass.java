@@ -125,6 +125,24 @@ public class TestClass {
 
     }
     @Test
+    void etape9(){
+        ApplicationInitializer.initializeApplication(
+                new ImmutableConfigManager(
+                        new File("res/app.cfg")
+                )
+        );
+        Environment env = new Environment();
+        Anthill anthill = new Anthill(new ToricPosition(1,1));
+        AntWorker antworker = new AntWorker(new ToricPosition(0,0), anthill.getAnthillId());
+        env.addFood(new Food(new ToricPosition(0,0), 10.0));
+        env.addFood(new Food(new ToricPosition(1,1), 12.5));
+        env.addFood(new Food(new ToricPosition(2,3), 8.3333333334));
+        env.addAnt(antworker);
+        env.addAnthill(anthill);
+        antworker.seekForFood(env, Time.fromSeconds(0.01));
+
+    }
+    @Test
     void etape3() {
         System.out.println("hello");
         ApplicationInitializer.initializeApplication(

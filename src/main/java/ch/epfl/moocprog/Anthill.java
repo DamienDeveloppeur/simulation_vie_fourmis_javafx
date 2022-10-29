@@ -52,6 +52,7 @@ public class Anthill extends Positionable{
         return foodQuantity;
     }
 
+
     @Override
     public String toString() {
         return "Anthill{" +

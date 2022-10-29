@@ -94,7 +94,15 @@ public final class Environment implements FoodGeneratorEnvironmentView,
                 ;
         if(hisAnthill == null) return false;
         double distance = antWorker.getPosition().toricDistance(hisAnthill.getPosition());
-        return distance > RAYON_ANT ? false : true;
+        if(distance <= RAYON_ANT){
+            if(antWorker.getFoodQuantity() > 0) {
+                hisAnthill.dropFood(antWorker.getFoodQuantity());
+                antWorker.setFoodQuantity(0);
+            }
+            antWorker.turnaround();
+            return true;
+        } else return false;
+        //return distance > RAYON_ANT ? false : true;
     }
 
     /**
@@ -168,7 +176,15 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         return Context.getConfig().getInt(Config.WORLD_HEIGHT);
     }
 
-    @Override
+    public List<Anthill> getAnthills() {
+        return anthills;
+    }
+
+    public void setAnthills(List<Anthill> anthills) {
+        this.anthills = anthills;
+    }
+
+            @Override
     public void selectSpecificBehaviorDispatch(AntWorker antWorker, Time dt) {
         antWorker.seekForFood(this, dt);
     }
