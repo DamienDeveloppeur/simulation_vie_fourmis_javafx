@@ -37,8 +37,8 @@ public final class Food extends Positionable{
     @Override
     public String toString() {
         return "Food{" +
-                "position=" + getPosition() +
-                ", quantity=" + String.format("Quantity : %.2f", getQuantity()) +
+                "position :" + getPosition() +
+                ", quantity :" + String.format("Quantity : %.2f", getQuantity()) +
                 '}';
     }
 }
