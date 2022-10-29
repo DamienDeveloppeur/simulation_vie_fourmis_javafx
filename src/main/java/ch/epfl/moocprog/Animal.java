@@ -59,10 +59,11 @@ public abstract class Animal extends Positionable {
      * @param env
      * @param dt
      */
-    public void update(AnimalEnvironmentView env, Time dt){
+    public final void update(AnimalEnvironmentView env, Time dt){
         if(!this.isDead()){
+            this.specificBehaviorDispatch(env, dt);
             setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
-            move(dt);
+            //move(dt);
         }
     }
 
@@ -88,6 +89,8 @@ public abstract class Animal extends Positionable {
         this.setPosition(this.getPosition().add(vec2d));
 
     }
+
+    abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
 
     public final Time getLifespan() {
         return lifespan;

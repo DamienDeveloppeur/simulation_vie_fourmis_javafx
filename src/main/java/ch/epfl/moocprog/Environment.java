@@ -58,7 +58,6 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         this.anthills.add(anthill);
     }
     public void addAnimal(Animal animal){
-        System.out.println("ANIMAL");
         if(animal == null) throw new IllegalArgumentException("Animal ne peut être null lors d'un ajout");
         this.animal.add(animal);
     }
@@ -72,7 +71,6 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     @Override
     public void addAnt(Ant ant) {
         addAnimal(ant);
-        System.out.println("ANT");
     }
     // retourne une référence sur la source de nourriture la plus proche perceptible par une fourmi antworker
     // return null si aucune est détecté
@@ -124,6 +122,9 @@ public final class Environment implements FoodGeneratorEnvironmentView,
             else a.update(this, dt);
         }
         foods.removeIf(food -> food.getQuantity() <= 0);
+        for(Anthill a : anthills){
+            a.update(this,dt);
+        }
     }
 
     /**
@@ -167,4 +168,13 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         return Context.getConfig().getInt(Config.WORLD_HEIGHT);
     }
 
+    @Override
+    public void selectSpecificBehaviorDispatch(AntWorker antWorker, Time dt) {
+        antWorker.seekForFood(this, dt);
+    }
+
+    @Override
+    public void selectSpecificBehaviorDispatch(AntSoldier antSoldier, Time dt) {
+        antSoldier.seekForEnemies(this,dt);
+    }
 }

@@ -19,10 +19,18 @@ public class AntWorker extends Ant{
         visitor.visit(this, s);
     }
 
+    @Override
+    void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt) {
+        env.selectSpecificBehaviorDispatch(this , dt);
+    }
+
     public double getFoodQuantity() {
         return foodQuantity;
     }
 
+    void seekForFood(AntWorkerEnvironmentView env, Time dt){
+        move(dt);
+    }
     @Override
     public String toString() {
         return "AntWorker{" +

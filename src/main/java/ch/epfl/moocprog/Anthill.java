@@ -27,10 +27,16 @@ public class Anthill extends Positionable{
         if(toDrop < 0) throw new IllegalArgumentException("toDrop ne peut être null ou négatif");
         this.foodQuantity += toDrop;
     }
-    public void update(Environment env, Time dt){
-        this.delayAnt.plus(dt);
+
+    /**
+     *
+     * @param env
+     * @param dt
+     */
+    public void update(AnthillEnvironmentView env, Time dt){
+        this.delayAnt = this.delayAnt.plus(dt);
         while(this.delayAnt.compareTo(ANTHILL_SPAWN_DELAY) >= 0) {
-            this.delayAnt.minus(ANTHILL_SPAWN_DELAY);
+            this.delayAnt = this.delayAnt.minus(ANTHILL_SPAWN_DELAY);
             double value = UniformDistribution.getValue(0,1);
             Ant ant = null;
             if(value <= probAnt) ant = new AntWorker(getPosition(),this.anthillId);

@@ -108,6 +108,22 @@ public class TestClass {
         // si l'on n'avait que f4, l'appel suivant retournerait null
         System.out.println(env.getClosestFoodForAnt(worker));
     }
+
+    @Test
+    void etape8(){
+        ApplicationInitializer.initializeApplication(
+                new ImmutableConfigManager(
+                        new File("res/app.cfg")
+                )
+        );
+        System.out.println("Début du test");
+        Environment env = new Environment();
+        Anthill anthill = new Anthill(new ToricPosition());
+        env.addAnthill(anthill);
+        AntWorker antw = new AntWorker(new ToricPosition(), anthill.getAnthillId());
+        anthill.update(env, Time.fromSeconds(0.0002));
+
+    }
     @Test
     void etape3() {
         System.out.println("hello");
