@@ -212,6 +212,7 @@ public class TestClass {
         System.out.print("After enough time, no pheromones should be left : ");
         env.update(Time.fromSeconds(30.));
         System.out.println(env.getPheromonesQuantities());
+
     }
 
     @Test

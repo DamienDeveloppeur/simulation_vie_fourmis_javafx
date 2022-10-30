@@ -66,7 +66,7 @@ public abstract class Ant extends Animal{
     public final RotationProbability computeRotationProbs(AntEnvironmentView env) {
         return env.selectComputeRotationProbsDispatch(this);
     }
-
+    @Override
     public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
         return env.selectComputeRotationProbsDispatch(this);
     }

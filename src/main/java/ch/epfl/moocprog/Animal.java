@@ -50,6 +50,7 @@ public abstract class Animal extends Positionable {
     public abstract double getSpeed();
     abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
     protected abstract void afterMoveDispatch(AnimalEnvironmentView env, Time dt);
+    protected abstract  RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env);
     public void accept(AnimalVisitor visitor, RenderingMedia s){
 
     }

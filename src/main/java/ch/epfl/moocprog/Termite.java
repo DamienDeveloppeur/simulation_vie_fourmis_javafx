@@ -24,6 +24,11 @@ public class Termite extends Animal{
     }
 
     @Override
+    public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
+        return null;
+    }
+
+    @Override
     public double getSpeed(){
         return Context.getConfig().getDouble(Config.TERMITE_SPEED);
     }
