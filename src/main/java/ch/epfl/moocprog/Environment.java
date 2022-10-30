@@ -5,6 +5,7 @@ import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.gfx.EnvironmentRenderer;
 import ch.epfl.moocprog.utils.Time;
 import ch.epfl.moocprog.utils.Utils;
+import ch.epfl.moocprog.utils.Vec2d;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,13 +29,16 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     private List<Food> foods;
     private List<Animal> animal;
     private List<Anthill> anthills;
+    private List<Pheromone> pheronomes;
     private double RAYON_ANT = Context.getConfig().getDouble(Config.ANT_MAX_PERCEPTION_DISTANCE);
+    private final double ANT_SMELL_MAX_DISTANCE = Context.getConfig().getDouble(Config.ANT_SMELL_MAX_DISTANCE);
 
     public Environment() {
         this.foodGenerator = new FoodGenerator();
         this.foods = new LinkedList<Food>();
         this.animal = new LinkedList<>();
         this.anthills = new LinkedList<>();
+        this.pheronomes = new LinkedList<>();
     }
 
     /**
@@ -45,6 +49,7 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         foods.forEach(environmentRenderer::renderFood);
         this.animal.forEach(a -> environmentRenderer.renderAnimal(a));
         this.anthills.forEach(a -> environmentRenderer.renderAnthill(a));
+        this.pheronomes.forEach(p -> environmentRenderer.renderPheromone(p));
     }
     /**
      * Add some entity to the env
@@ -57,6 +62,11 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         if(anthill == null) throw new IllegalArgumentException("Une anthill ne peux être null lors d'un ajout");
         this.anthills.add(anthill);
     }
+
+    /**
+     *
+     * @param animal
+     */
     public void addAnimal(Animal animal){
         if(animal == null) throw new IllegalArgumentException("Animal ne peut être null lors d'un ajout");
         this.animal.add(animal);
@@ -123,16 +133,20 @@ public final class Environment implements FoodGeneratorEnvironmentView,
      */
     public void update(Time dt){
         foodGenerator.update(this,dt);
+        for(Pheromone p : this.pheronomes){
+            p.update(dt);
+        }
         Iterator<Animal> i = this.animal.iterator();
         while(i.hasNext()){
             Animal a = i.next();
             if(a.isDead()) i.remove();
             else a.update(this, dt);
         }
-        foods.removeIf(food -> food.getQuantity() <= 0);
+
         for(Anthill a : anthills){
             a.update(this,dt);
         }
+        foods.removeIf(food -> food.getQuantity() <= 0);
     }
 
     /**
@@ -184,7 +198,13 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         this.anthills = anthills;
     }
 
-            @Override
+    public List<Double> getPheromonesQuantities() {
+        return this.pheronomes.stream()
+                .map(p -> p.getQuantity())
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public void selectSpecificBehaviorDispatch(AntWorker antWorker, Time dt) {
         antWorker.seekForFood(this, dt);
     }
@@ -192,5 +212,54 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     @Override
     public void selectSpecificBehaviorDispatch(AntSoldier antSoldier, Time dt) {
         antSoldier.seekForEnemies(this,dt);
+    }
+
+    @Override
+    public void addPheromone(Pheromone pheromone) {
+        if(pheromone == null) throw new IllegalArgumentException("Pheromone ne doit pas être null");
+        this.pheronomes.add(pheromone);
+    }
+
+    @Override
+    public double[] getPheromoneQuantitiesPerIntervalForAnt(ToricPosition position, double directionAngleRad, double[] angles) {
+        if(angles.length != 11) throw new IllegalArgumentException("angles doit avoir une taille de 11");
+        // ( -180, -100, -55, -25, -10, 0, 10, 25, 55, 100, 180 )
+        double[] t = new double[11];
+        for(Pheromone p : this.pheronomes){
+            if(!p.isNegligible() && position.toricDistance(p.getPosition()) <= ANT_SMELL_MAX_DISTANCE){
+                Vec2d v = position.toricVector(p.getPosition());
+                double beta = v.angle() - position.toVec2d().angle();
+                double minAngle = 999999999;
+                int i = 0;
+                int index = 0;
+                for(double angle : angles){
+                    double angleMin = closestAngleFrom(angles[i], beta);
+                    if(angleMin < minAngle){
+                        minAngle = angleMin;
+                        index = i;
+                    }
+                    i++;
+                }
+                t[index] = p.getQuantity();
+
+            }
+        }
+        return t;
+    }
+
+    /**
+     * Utilitaire
+     */
+    static double normalizedAngle(double angle){
+        while(angle < 0 || angle > 2 * Math.PI){
+            if(angle < 0) angle += 2 * Math.PI;
+            if(angle > 2 * Math.PI) angle -=  2*Math.PI;
+        }
+        return angle;
+    }
+    static double closestAngleFrom(double angle, double target){
+        double diff = normalizedAngle(angle - target);
+        double test = 2*Math.PI - diff;
+        return Math.min(test, diff);
     }
 }

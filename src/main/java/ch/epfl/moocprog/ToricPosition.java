@@ -91,7 +91,6 @@ public final class ToricPosition {
      * @return
      */
     public double toricDistance(ToricPosition that){
-
         return toricVector(that).length();
     }
 

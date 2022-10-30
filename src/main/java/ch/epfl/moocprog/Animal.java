@@ -31,7 +31,6 @@ public abstract class Animal extends Positionable {
         this.angle = UniformDistribution.getValue(0, 2 * Math.PI);
     }
 
-
     /**
      *
      * @return une instance de RotationProbability

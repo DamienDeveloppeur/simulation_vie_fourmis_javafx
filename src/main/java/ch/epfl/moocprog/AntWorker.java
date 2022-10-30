@@ -38,7 +38,6 @@ public class AntWorker extends Ant{
      * @param dt
      */
     public void seekForFood(AntWorkerEnvironmentView env, Time dt) {
-        System.out.println(env.dropFood(this));
 //        while(env.getClosestFoodForAnt(this) != null || (env.dropFood(this) && this.foodQuantity > 0 ) ){
 //            System.out.println("loop of loop");
 //            if (this.foodQuantity == 0) {
@@ -53,7 +52,6 @@ public class AntWorker extends Ant{
 //                env.dropFood(this);
 //            }
 //        }
-        System.out.println("Out of loop");
         if (this.foodQuantity == 0) {
             Food f = env.getClosestFoodForAnt(this);
             if (f != null) {
