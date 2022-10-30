@@ -151,7 +151,7 @@ public class TestClass {
                         new File("res/app.cfg")
                 )
         );
-        System.out.println();
+
         double minQty = getConfig().getDouble(Config.PHEROMONE_THRESHOLD);
         Pheromone pher1 = new Pheromone( new ToricPosition(10.,10.), minQty);
         System.out.print("Pheromone pher1 created with quantity PHEROMONE_THRESHOLD = ");

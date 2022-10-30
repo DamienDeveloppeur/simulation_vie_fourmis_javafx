@@ -13,7 +13,7 @@ public class AntSoldier extends Ant{
         );
     }
     void seekForEnemies(AntEnvironmentView env, Time dt){
-        move(dt);
+        move(env, dt);
     }
     public void accept(AnimalVisitor visitor, RenderingMedia s) {
         visitor.visit(this, s);
@@ -27,5 +27,10 @@ public class AntSoldier extends Ant{
     @Override
     public double getSpeed(){
         return Context.getConfig().getDouble(Config.ANT_SOLDIER_SPEED);
+    }
+
+    @Override
+    public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
+        return computeDefaultRotationProbs();
     }
 }

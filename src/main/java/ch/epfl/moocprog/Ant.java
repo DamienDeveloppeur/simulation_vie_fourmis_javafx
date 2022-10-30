@@ -54,6 +54,22 @@ public abstract class Ant extends Animal{
         }
 
     }
+    public void afterMoveAnt(AntEnvironmentView env, Time dt){
+        spreadPheromones(env);
+    }
+
+    @Override
+    public void afterMoveDispatch(AnimalEnvironmentView env, Time dt){
+        env.selectAfterMoveDispatch(this, dt);
+    }
+
+    public final RotationProbability computeRotationProbs(AntEnvironmentView env) {
+        return env.selectComputeRotationProbsDispatch(this);
+    }
+
+    public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
+        return env.selectComputeRotationProbsDispatch(this);
+    }
 
     public void setAnthillId(Uid anthillId) {
         this.anthillId = anthillId;
@@ -66,4 +82,5 @@ public abstract class Ant extends Animal{
     public void setLastPos(ToricPosition lastPos) {
         this.lastPos = lastPos;
     }
+
 }

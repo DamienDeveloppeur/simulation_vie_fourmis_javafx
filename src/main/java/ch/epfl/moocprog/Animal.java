@@ -35,7 +35,7 @@ public abstract class Animal extends Positionable {
      *
      * @return une instance de RotationProbability
      */
-    protected RotationProbability computeRotationProbs(){
+    protected final RotationProbability computeDefaultRotationProbs(){
         RotationProbability rp = new RotationProbability(
                 new double[] {-180.0, -100.0, -55.0, -25.0, -10.0,0.0,10.0,25.0,55.0,100.0,180.0},
                 //new double[] {0.0000, 0.0100, 0.0900, 0.1500, 0.5000, 0.1500, 0.0900, 0.0100, 0.0000}
@@ -48,8 +48,8 @@ public abstract class Animal extends Positionable {
      * Abstracts Methods
      */
     public abstract double getSpeed();
-
-
+    abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
+    protected abstract void afterMoveDispatch(AnimalEnvironmentView env, Time dt);
     public void accept(AnimalVisitor visitor, RenderingMedia s){
 
     }
@@ -70,7 +70,7 @@ public abstract class Animal extends Positionable {
      * Met à jour le déplacement de l'animal après un écoulement de temps
      * @param dt
      */
-    protected final void move(Time dt) {
+    protected final void move(AnimalEnvironmentView env, Time dt) {
         //Pour mettre en oeuvre cela, vous pouvez ajouter à l’animal un compteur de
         //type Time (initialisé à Time.ZERO), nommé rotationDelay, mesurant le temps
         //écoulé depuis la précédente rotation.
@@ -78,8 +78,8 @@ public abstract class Animal extends Positionable {
         //compareTo --> -1 rotationDelay est strictement plus petit que la constante
         while(getRotationDelay().compareTo(getANIMAL_NEXT_ROTATION_DELAY())  >= 0){
             setRotationDelay(getRotationDelay().minus(getANIMAL_NEXT_ROTATION_DELAY()));
-            Double value = Utils.pickValue(computeRotationProbs().getAngles(), computeRotationProbs().getProbabilities());
-//            value = Math.toRadians(value);
+            Double value = Utils.pickValue(computeDefaultRotationProbs().getAngles(), computeDefaultRotationProbs().getProbabilities());
+            //value = Math.toRadians(value);
             rotate(value);
 
         }
@@ -89,7 +89,6 @@ public abstract class Animal extends Positionable {
 
     }
 
-    abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
 
     public final Time getLifespan() {
         return lifespan;

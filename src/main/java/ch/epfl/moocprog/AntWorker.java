@@ -19,10 +19,7 @@ public class AntWorker extends Ant{
         visitor.visit(this, s);
     }
 
-    @Override
-    void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt) {
-        env.selectSpecificBehaviorDispatch(this , dt);
-    }
+
 
     public double getFoodQuantity() {
         return foodQuantity;
@@ -63,7 +60,23 @@ public class AntWorker extends Ant{
         } else {
             env.dropFood(this);
         }
-        move(dt);
+        move(env, dt);
+    }
+
+
+    @Override
+    public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
+        return computeDefaultRotationProbs();
+    }
+
+    @Override
+    public double getSpeed(){
+        return Context.getConfig().getDouble(Config.ANT_WORKER_SPEED);
+    }
+
+    @Override
+    void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt) {
+        env.selectSpecificBehaviorDispatch(this , dt);
     }
     @Override
     public String toString() {
@@ -74,10 +87,5 @@ public class AntWorker extends Ant{
                 "LifeSpan : " + getLifespan() +
                 "Quantity=" + foodQuantity +
                 '}';
-    }
-
-    @Override
-    public double getSpeed(){
-        return Context.getConfig().getDouble(Config.ANT_WORKER_SPEED);
     }
 }

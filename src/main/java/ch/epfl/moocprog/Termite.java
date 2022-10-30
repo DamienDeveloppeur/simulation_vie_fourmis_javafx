@@ -19,6 +19,11 @@ public class Termite extends Animal{
     }
 
     @Override
+    protected void afterMoveDispatch(AnimalEnvironmentView env, Time dt) {
+
+    }
+
+    @Override
     public double getSpeed(){
         return Context.getConfig().getDouble(Config.TERMITE_SPEED);
     }

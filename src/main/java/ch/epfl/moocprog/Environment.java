@@ -215,6 +215,16 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     }
 
     @Override
+    public RotationProbability selectComputeRotationProbsDispatch(Ant ant) {
+        return ant.computeRotationProbs(this);
+    }
+
+    @Override
+    public void selectAfterMoveDispatch(Ant ant, Time dt) {
+        ant.afterMoveAnt(this,dt);
+    }
+
+            @Override
     public void addPheromone(Pheromone pheromone) {
         if(pheromone == null) throw new IllegalArgumentException("Pheromone ne doit pas être null");
         this.pheronomes.add(pheromone);
