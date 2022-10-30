@@ -10,6 +10,7 @@ import static java.lang.Integer.parseInt;
 public abstract class Ant extends Animal{
     private Uid anthillId;
     private ToricPosition lastPos;
+    private AntRotationProbabilityModel probModel;
 
     public Ant(ToricPosition toricPosition,
                int hitpoints,
@@ -18,6 +19,18 @@ public abstract class Ant extends Animal{
         super(toricPosition, hitpoints, lifespan);
         this.anthillId = anthillId;
         this.lastPos = toricPosition;
+        this.probModel = new PheromoneRotationProbabilityModel();
+    }
+
+    public Ant(ToricPosition toricPosition,
+               int hitpoints,
+               Time lifespan,
+               Uid anthillId,
+               AntRotationProbabilityModel probModel) {
+        super(toricPosition, hitpoints, lifespan);
+        this.anthillId = anthillId;
+        this.lastPos = toricPosition;
+        this.probModel = probModel;
     }
 
     public final Uid getAnthillId(){
@@ -64,7 +77,7 @@ public abstract class Ant extends Animal{
     }
 
     public final RotationProbability computeRotationProbs(AntEnvironmentView env) {
-        return env.selectComputeRotationProbsDispatch(this);
+        return probModel.computeRotationProbs(computeDefaultRotationProbs(), getPosition(), getDirection(), env);
     }
     @Override
     public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {

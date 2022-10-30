@@ -5,11 +5,22 @@ import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.utils.Time;
 
 public class AntSoldier extends Ant{
-    public AntSoldier(ToricPosition toricPosition, Uid anthillId ) {
-        super(toricPosition,
+    public AntSoldier(ToricPosition toricPosition, Uid anthillId) {
+        super(
+                toricPosition,
                 Context.getConfig().getInt(Config.ANT_SOLDIER_HP),
                 Context.getConfig().getTime(Config.ANT_SOLDIER_LIFESPAN),
                 anthillId
+
+        );
+    }
+    public AntSoldier(ToricPosition toricPosition, Uid anthillId, AntRotationProbabilityModel probModel) {
+        super(
+                toricPosition,
+                Context.getConfig().getInt(Config.ANT_SOLDIER_HP),
+                Context.getConfig().getTime(Config.ANT_SOLDIER_LIFESPAN),
+                anthillId,
+                probModel
         );
     }
     void seekForEnemies(AntEnvironmentView env, Time dt){

@@ -7,12 +7,23 @@ import ch.epfl.moocprog.utils.Time;
 public class AntWorker extends Ant{
     private double foodQuantity = 0;
 
-
     public AntWorker(ToricPosition toricPosition, Uid uid) {
-        super(toricPosition,
+        super(
+                toricPosition,
                 Context.getConfig().getInt(Config.ANT_WORKER_HP),
                 Context.getConfig().getTime(Config.ANT_WORKER_LIFESPAN),
-                uid);
+                uid
+        );
+    }
+    public AntWorker(ToricPosition toricPosition, Uid uid, AntRotationProbabilityModel probModel) {
+        super(
+                toricPosition,
+                Context.getConfig().getInt(Config.ANT_WORKER_HP),
+                Context.getConfig().getTime(Config.ANT_WORKER_LIFESPAN),
+                uid,
+                probModel
+
+        );
     }
 
     public void accept(AnimalVisitor visitor, RenderingMedia s) {
