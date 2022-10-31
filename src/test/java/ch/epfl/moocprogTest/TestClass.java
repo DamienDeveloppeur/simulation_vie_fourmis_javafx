@@ -151,9 +151,13 @@ public class TestClass {
                         new File("res/app.cfg")
                 )
         );
+        Environment env = new Environment();
+        Anthill anthill = new Anthill(new ToricPosition(20,20));
+        Ant antWork = new AntWorker(new ToricPosition(10,10), anthill.getAnthillId());
 
         double minQty = getConfig().getDouble(Config.PHEROMONE_THRESHOLD);
         Pheromone pher1 = new Pheromone( new ToricPosition(10.,10.), minQty);
+
         System.out.print("Pheromone pher1 created with quantity PHEROMONE_THRESHOLD = ");
         System.out.println( minQty );
         System.out.println("the position of the pheromone is :" + pher1.getPosition());
@@ -162,7 +166,6 @@ public class TestClass {
         System.out.print("the quantity of the pheromone is negligible : ");
         System.out.println(pher1.isNegligible());
 
-       Environment env = new Environment();
         env.addPheromone(pher1);
         env.update(Time.fromSeconds(1.));
         System.out.print("After one step of evaporation (dt = 1 sec), ");
@@ -197,11 +200,21 @@ public class TestClass {
         env.addPheromone(pher4);
         env.addPheromone(pher5);
         System.out.print("The quantities of pheromone in the environment are: ");
-
+//
         System.out.println(env.getPheromonesQuantities());
+//        double[] pheromonesAroundPosition =
+//                env.getPheromoneQuantitiesPerIntervalForAnt(antPosition, 0.,
+//                        new double[] {Math.toRadians(-180), Math.toRadians(-100),
+//                                Math.toRadians(-55), Math.toRadians(-25),
+//                                Math.toRadians(-10), Math.toRadians(0),
+//                                Math.toRadians(10), Math.toRadians(25),
+//                                Math.toRadians(55), Math.toRadians(100),
+//                                Math.toRadians(180)
+//                        });
+
         double[] pheromonesAroundPosition =
                 env.getPheromoneQuantitiesPerIntervalForAnt(antPosition, 0.,
-                        new double[] {Math.toRadians(-180), Math.toRadians(-100),
+                        new double[] { Math.toRadians(-180), Math.toRadians(-100),
                                 Math.toRadians(-55), Math.toRadians(-25),
                                 Math.toRadians(-10), Math.toRadians(0),
                                 Math.toRadians(10), Math.toRadians(25),
@@ -209,6 +222,7 @@ public class TestClass {
                                 Math.toRadians(180)
                         });
         System.out.println(Arrays.toString(pheromonesAroundPosition) + "\n");
+        // [0.0, 2.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0]
         System.out.print("After enough time, no pheromones should be left : ");
         env.update(Time.fromSeconds(30.));
         System.out.println(env.getPheromonesQuantities());

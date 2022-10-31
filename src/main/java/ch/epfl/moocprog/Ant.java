@@ -56,7 +56,7 @@ public abstract class Ant extends Animal{
         double distance = lastPos.toricDistance(currentPos);
         double densite = Context.getConfig().getDouble(Config.ANT_PHEROMONE_DENSITY);
         ToricPosition toricPheromone = new ToricPosition(this.lastPos.toricVector(currentPos));
-        int N = (int) (distance * densite);
+        int N = (int) (distance * densite); // instances de phéromones
         Vec2d scalar = toricPheromone.getPosition().scalarProduct(distance);
         // on doit ajouter a chaque position entre lastpos et currentpos des pheromones
         lastPos = lastPos.add(scalar);
