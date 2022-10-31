@@ -44,4 +44,19 @@ public class AntSoldier extends Ant{
     public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {
         return computeDefaultRotationProbs();
     }
+
+    @Override
+    public int getMinAttackStrength() {
+        return Context.getConfig().getInt(Config.ANT_WORKER_MIN_STRENGTH);
+    }
+
+    @Override
+    public int getMaxAttackStrength() {
+        return Context.getConfig().getInt(Config.ANT_WORKER_MAX_STRENGTH);
+    }
+
+    @Override
+    public Time getMaxAttackDuration() {
+        return Context.getConfig().getTime(Config.ANT_WORKER_ATTACK_DURATION);
+    }
 }

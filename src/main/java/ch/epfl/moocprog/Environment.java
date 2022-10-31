@@ -22,7 +22,8 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         AnimalEnvironmentView,
         AnthillEnvironmentView,
         AntEnvironmentView,
-        AntWorkerEnvironmentView
+        AntWorkerEnvironmentView,
+        TermiteEnvironmentView
         {
 
     private FoodGenerator foodGenerator;
@@ -32,6 +33,7 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     private List<Pheromone> pheronomes;
     private double RAYON_ANT = Context.getConfig().getDouble(Config.ANT_MAX_PERCEPTION_DISTANCE);
     private final double ANT_SMELL_MAX_DISTANCE = Context.getConfig().getDouble(Config.ANT_SMELL_MAX_DISTANCE);
+    private final double ANIMAL_SIGHT_DISTANCE = Context.getConfig().getDouble(Config.ANIMAL_SIGHT_DISTANCE);
 
     public Environment() {
         this.foodGenerator = new FoodGenerator();
@@ -148,7 +150,6 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         }
         foods.removeIf(food -> food.getQuantity() <= 0);
     }
-
     /**
      *
      * @return
@@ -215,6 +216,11 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     }
 
     @Override
+    public void selectSpecificBehaviorDispatch(Termite termite, Time dt) {
+        termite.seekForEnemies(this, dt);
+    }
+
+    @Override
     public RotationProbability selectComputeRotationProbsDispatch(Ant ant) {
         return ant.computeRotationProbs(this);
     }
@@ -224,7 +230,35 @@ public final class Environment implements FoodGeneratorEnvironmentView,
         ant.afterMoveAnt(this,dt);
     }
 
-            @Override
+    @Override
+    public void selectAfterMoveDispatch(Termite termite, Time dt) {
+        termite.afterMoveTermite(this,dt);
+    }
+
+    @Override
+    public RotationProbability selectComputeRotationProbsDispatch(Termite termite) {
+        return termite.computeRotationProbs(this);
+    }
+
+    @Override
+    public List<Animal> getVisibleEnemiesForAnimal(Animal from) {
+        if(from == null) throw new IllegalArgumentException("From ne peut être null");
+        return this.animal.stream()
+                .filter(a -> a.isEnemy(from) && a.getPosition().toricDistance(from.getPosition()) <= ANIMAL_SIGHT_DISTANCE)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public boolean isVisibleFromEnemies(Animal from) {
+        if(from == null) throw new IllegalArgumentException("From ne peut être null");
+        return this.animal
+                .stream()
+                .anyMatch(a -> a.isEnemy(from) && !a.isDead() && a.getPosition().toricDistance(from.getPosition()) <= ANIMAL_SIGHT_DISTANCE)
+                ;
+
+    }
+
+    @Override
     public void addPheromone(Pheromone pheromone) {
         if(pheromone == null) throw new IllegalArgumentException("Pheromone ne doit pas être null");
         this.pheronomes.add(pheromone);
@@ -232,7 +266,7 @@ public final class Environment implements FoodGeneratorEnvironmentView,
 
     @Override
     public double[] getPheromoneQuantitiesPerIntervalForAnt(ToricPosition position, double directionAngleRad, double[] angles) {
-        //if(angles.length != 11) throw new IllegalArgumentException("angles doit avoir une taille de 11");
+        if(angles.length == 0) return null;
         // ( -180, -100, -55, -25, -10, 0, 10, 25, 55, 100, 180 )
         double[] t = new double[11];
         for(Pheromone p : this.pheronomes){

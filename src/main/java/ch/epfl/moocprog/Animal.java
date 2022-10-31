@@ -16,6 +16,7 @@ public abstract class Animal extends Positionable {
     private int hitpoints;
     private Time lifespan;
     private Time rotationDelay = Time.ZERO;
+    private Time timeduration;
     private  final Time ANIMAL_NEXT_ROTATION_DELAY = Context.getConfig().getTime(Config.ANIMAL_NEXT_ROTATION_DELAY);
 
     public Animal(Double angle, int hitpoints, Time lifespan) {
@@ -29,6 +30,25 @@ public abstract class Animal extends Positionable {
         this.hitpoints = hitpoints;
         this.lifespan = lifespan;
         this.angle = UniformDistribution.getValue(0, 2 * Math.PI);
+        this.timeduration = Time.ZERO;
+    }
+    /**
+     * Abstracts Methods
+     */
+    public abstract double getSpeed();
+    abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
+    protected abstract void afterMoveDispatch(AnimalEnvironmentView env, Time dt);
+    protected abstract  RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env);
+    protected abstract boolean isEnemy(Animal entity);
+    protected abstract boolean isEnemyDispatch(Termite other);
+    protected abstract boolean isEnemyDispatch(Ant other);
+    public abstract int getMinAttackStrength();
+    public abstract int getMaxAttackStrength();
+    public abstract Time getMaxAttackDuration();
+
+
+    public void accept(AnimalVisitor visitor, RenderingMedia s){
+
     }
 
     /**
@@ -44,16 +64,8 @@ public abstract class Animal extends Positionable {
         return rp;
     }
 
-    /**
-     * Abstracts Methods
-     */
-    public abstract double getSpeed();
-    abstract void specificBehaviorDispatch(AnimalEnvironmentView env, Time dt);
-    protected abstract void afterMoveDispatch(AnimalEnvironmentView env, Time dt);
-    protected abstract  RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env);
-    public void accept(AnimalVisitor visitor, RenderingMedia s){
 
-    }
+
     /**
      *
      * @param env

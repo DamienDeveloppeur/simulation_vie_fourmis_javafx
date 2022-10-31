@@ -74,6 +74,20 @@ public class AntWorker extends Ant{
         move(env, dt);
     }
 
+    @Override
+    public int getMinAttackStrength() {
+        return Context.getConfig().getInt(Config.ANT_SOLDIER_MIN_STRENGTH);
+    }
+
+    @Override
+    public int getMaxAttackStrength() {
+        return Context.getConfig().getInt(Config.ANT_SOLDIER_MAX_STRENGTH);
+    }
+
+    @Override
+    public Time getMaxAttackDuration() {
+        return Context.getConfig().getTime(Config.ANT_SOLDIER_ATTACK_DURATION);
+    }
 
     @Override
     public RotationProbability computeRotationProbsDispatch(AnimalEnvironmentView env) {

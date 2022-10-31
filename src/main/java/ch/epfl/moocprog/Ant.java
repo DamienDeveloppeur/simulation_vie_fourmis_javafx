@@ -37,6 +37,21 @@ public abstract class Ant extends Animal{
         return  anthillId;
     }
 
+    @Override
+    public boolean isEnemy(Animal entity) {
+        return !this.isDead() && !entity.isDead() && entity.isEnemyDispatch(this);
+    }
+
+    @Override
+    public boolean isEnemyDispatch(Termite other) {
+        return true;
+    }
+
+    @Override
+    public boolean isEnemyDispatch(Ant other) {
+        return false;
+    }
+
     /**
      * Simple turnaround after take or drop food
      */
