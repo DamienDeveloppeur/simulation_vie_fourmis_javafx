@@ -49,7 +49,7 @@ public abstract class Ant extends Animal{
 
     @Override
     public boolean isEnemyDispatch(Ant other) {
-        return false;
+        return other.getAnthillId() != this.getAnthillId();
     }
 
     /**

@@ -250,10 +250,11 @@ public final class Environment implements FoodGeneratorEnvironmentView,
 
     @Override
     public boolean isVisibleFromEnemies(Animal from) {
+        System.out.println("ANIMAL_SIGHT_DISTANCE : "+ ANIMAL_SIGHT_DISTANCE);
         if(from == null) throw new IllegalArgumentException("From ne peut être null");
         return this.animal
                 .stream()
-                .anyMatch(a -> a.isEnemy(from) && !a.isDead() && a.getPosition().toricDistance(from.getPosition()) <= ANIMAL_SIGHT_DISTANCE)
+                .anyMatch(a ->a.isEnemy(from) && !a.isDead() && a.getPosition().toricDistance(from.getPosition()) <= ANIMAL_SIGHT_DISTANCE)
                 ;
 
     }
