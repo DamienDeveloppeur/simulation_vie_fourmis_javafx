@@ -232,7 +232,7 @@ public final class Environment implements FoodGeneratorEnvironmentView,
 
     @Override
     public double[] getPheromoneQuantitiesPerIntervalForAnt(ToricPosition position, double directionAngleRad, double[] angles) {
-        if(angles.length != 11) throw new IllegalArgumentException("angles doit avoir une taille de 11");
+        //if(angles.length != 11) throw new IllegalArgumentException("angles doit avoir une taille de 11");
         // ( -180, -100, -55, -25, -10, 0, 10, 25, 55, 100, 180 )
         double[] t = new double[11];
         for(Pheromone p : this.pheronomes){
