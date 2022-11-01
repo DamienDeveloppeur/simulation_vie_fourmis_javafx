@@ -3,7 +3,7 @@ package ch.epfl.moocprog;
 import ch.epfl.moocprog.app.Context;
 import ch.epfl.moocprog.config.Config;
 import ch.epfl.moocprog.utils.Time;
-
+//92.83 %.
 public class Pheromone extends Positionable {
     private double quantity;
     private final double PHEROMONE_THRESHOLD = Context.getConfig().getDouble(Config.PHEROMONE_THRESHOLD);

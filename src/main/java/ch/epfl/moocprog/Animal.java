@@ -83,7 +83,7 @@ public abstract class Animal extends Positionable {
      *
      * @return
      */
-    public boolean canAttack(){
+    public final boolean canAttack(){
         return !this.state.toString().equals("ESCAPING") && getAttackDuration().compareTo(getMaxAttackDuration()) <= 0;
     }
 
