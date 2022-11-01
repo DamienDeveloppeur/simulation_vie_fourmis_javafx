@@ -17,7 +17,21 @@ public abstract class Animal extends Positionable {
     private Time lifespan;
     private Time rotationDelay = Time.ZERO;
     private Time timeduration;
+    private State state;
+    private Time attackDuration = Time.ZERO;
     private  final Time ANIMAL_NEXT_ROTATION_DELAY = Context.getConfig().getTime(Config.ANIMAL_NEXT_ROTATION_DELAY);
+
+    public enum State {
+        IDLE, ESCAPING, ATTACK;
+    }
+    public final State getState(){
+        return this.state;
+    }
+    public void setState(State State){
+        this.state = state;
+    }
+
+
 
     public Animal(Double angle, int hitpoints, Time lifespan) {
         this.angle = angle;
@@ -31,6 +45,7 @@ public abstract class Animal extends Positionable {
         this.lifespan = lifespan;
         this.angle = UniformDistribution.getValue(0, 2 * Math.PI);
         this.timeduration = Time.ZERO;
+        this.state = State.IDLE;
     }
     /**
      * Abstracts Methods
@@ -64,6 +79,39 @@ public abstract class Animal extends Positionable {
         return rp;
     }
 
+    /**
+     *
+     * @return
+     */
+    public boolean canAttack(){
+        return !this.state.toString().equals("ESCAPING") && getAttackDuration().compareTo(getMaxAttackDuration()) <= 0;
+    }
+
+    /**
+     *
+     * @param env
+     * @param dt
+     */
+    public void escape(AnimalEnvironmentView env, Time dt){
+        move(env, dt);
+    }
+    public void fight(AnimalEnvironmentView env, Time dt){
+        // target l'ennemie le plus proche, si il existe :
+        Animal target = Utils.closestFromPoint(this,env.getVisibleEnemiesForAnimal(this));
+        if(target != null){
+            setState(State.ATTACK);
+            target.setHitpoints((int) (target.getHitpoints() - UniformDistribution.getValue(getMinAttackStrength(), getMaxAttackStrength())));
+            setAttackDuration(this.getAttackDuration().plus(dt));
+        } else {
+            setState(State.ESCAPING);
+            setAttackDuration(Time.ZERO);
+        }
+        // state = ATTACK
+        //  infliger degat ; attackduration += dt
+
+        // sinon attackDuration = 0
+        // state de ATTACK à ESCAPING
+    }
 
 
     /**
@@ -73,6 +121,20 @@ public abstract class Animal extends Positionable {
      */
     public final void update(AnimalEnvironmentView env, Time dt){
         if(!this.isDead()){
+            switch (this.state){
+                case ATTACK:
+                    fight(env, dt);
+                    break;
+                case ESCAPING:
+                     escape(env,dt);
+                    break;
+                case IDLE:
+                    this.specificBehaviorDispatch(env, dt);
+                    break;
+                default:
+                    this.specificBehaviorDispatch(env, dt);
+
+            }
             this.specificBehaviorDispatch(env, dt);
             setLifespan(getLifespan().minus(dt.times(Context.getConfig().getDouble(Config.ANIMAL_LIFESPAN_DECREASE_FACTOR))));
             //move(dt);
@@ -155,6 +217,22 @@ public abstract class Animal extends Positionable {
         this.angle += rotate;
     }
 
+    public Time getTimeduration() {
+        return timeduration;
+    }
+
+    public void setTimeduration(Time timeduration) {
+        this.timeduration = timeduration;
+    }
+
+    public Time getAttackDuration() {
+        return attackDuration;
+    }
+
+    public void setAttackDuration(Time attackDuration) {
+        this.attackDuration = attackDuration;
+    }
+
     /**
      *
      * @return
@@ -166,6 +244,7 @@ public abstract class Animal extends Positionable {
                 "angle=" + angle +
                 ", hitpoints=" + hitpoints +
                 ", lifespan=" + lifespan +
+                ", State="+ state +
                 '}';
     }
 }

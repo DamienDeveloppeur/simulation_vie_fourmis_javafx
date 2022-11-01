@@ -47,16 +47,16 @@ public class AntSoldier extends Ant{
 
     @Override
     public int getMinAttackStrength() {
-        return Context.getConfig().getInt(Config.ANT_WORKER_MIN_STRENGTH);
+        return Context.getConfig().getInt(Config.ANT_SOLDIER_MIN_STRENGTH);
     }
 
     @Override
     public int getMaxAttackStrength() {
-        return Context.getConfig().getInt(Config.ANT_WORKER_MAX_STRENGTH);
+        return Context.getConfig().getInt(Config.ANT_SOLDIER_MAX_STRENGTH);
     }
 
     @Override
     public Time getMaxAttackDuration() {
-        return Context.getConfig().getTime(Config.ANT_WORKER_ATTACK_DURATION);
+        return Context.getConfig().getTime(Config.ANT_SOLDIER_ATTACK_DURATION);
     }
 }

@@ -268,12 +268,13 @@ public final class Environment implements FoodGeneratorEnvironmentView,
     @Override
     public double[] getPheromoneQuantitiesPerIntervalForAnt(ToricPosition position, double directionAngleRad, double[] angles) {
         if(angles.length == 0) return null;
+        if(position == null) throw new IllegalArgumentException("position ne peut être null");
         // ( -180, -100, -55, -25, -10, 0, 10, 25, 55, 100, 180 )
-        double[] t = new double[11];
+        double[] t = new double[angles.length];
         for(Pheromone p : this.pheronomes){
             if(!p.isNegligible() && position.toricDistance(p.getPosition()) <= ANT_SMELL_MAX_DISTANCE){
                 Vec2d v = position.toricVector(p.getPosition());
-                double beta = v.angle() - position.toVec2d().angle();
+                double beta = v.angle() - directionAngleRad;
                 double minAngle = 999999999;
                 int i = 0;
                 int index = 0;
@@ -285,7 +286,7 @@ public final class Environment implements FoodGeneratorEnvironmentView,
                     }
                     i++;
                 }
-                t[index] = p.getQuantity();
+                t[index] = t[index] + p.getQuantity();
 
             }
         }

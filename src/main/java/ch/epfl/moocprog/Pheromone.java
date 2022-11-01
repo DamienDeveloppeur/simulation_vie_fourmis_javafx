@@ -18,7 +18,7 @@ public class Pheromone extends Positionable {
         return this.quantity;
     }
     public boolean isNegligible(){
-        return getQuantity() < PHEROMONE_THRESHOLD;
+        return getQuantity() <= PHEROMONE_THRESHOLD;
     }
 
     /**
@@ -32,5 +32,6 @@ public class Pheromone extends Positionable {
             else break;
         }
     }
+
 
 }
